@@ -94,7 +94,7 @@ else;
 	showheader("home");
 ?>
         
-            <div class="row" style="background-color: #2f4f4f;">
+            <div class="row" style="background-image: url(images/background_by_hadouuuken-dc9yxs6.png);">
                 <div class="well col-lg-4 col-md-4 col-sm-4 col-xs-4 col-lg-offset-1 col-md-offset-1 col-xs-offset-1 col-sm-offset-1 ">
                     <h2>Create account <span class="glyphicon glyphicon-exclamation-sign"></span></h2>
                     <form action="index.php" method="post">

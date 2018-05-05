@@ -13,13 +13,10 @@ function showheader($title){
     <script src="style/js/bootstrap.min.js"></script>
 </head>
     <body>
-	<div class="container-fluid" style="background-color:#20b2aa";>
-        <div class="row" style="background-color:#20b2aa"; >
+	<div class="container-fluid" style="background-image: url(images/background_by_hadouuuken-dc9yxs6.png);">
             
-            <div class="logo_text col-lg-1 col-md-1 col-sm-1 col-xs-1 col-lg-offset-5 col-md-offset-5 col-sm-offset-5 col-xs-offset-5" id = "logo_mini">mini</div>
-            <div id="logo_o" class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
-            <div class = "logo_text" id = "logo_lx">LX</div>
-        </div>
+		<img src = "images/imageedit_7_5986917331_by_hadouuuken-dc9yxd0.png" align = "middle" style = "width: 100px; height: 50px;"></img>
+        
 	<h4 style="text-align:center"><span class="label label-default">buy</span> or <span class="label label-default">sell</span>, <span class="label label-default">lend</span> or <span class="label label-default">borrow</span></h4>
     <hr>
     </div>
