@@ -94,14 +94,14 @@ function othersStatus(productId,i)
 
 
 
-<div class="container-fluid" style="background-color: #2f4f4f;">
-  <div class="container-fluid" sstyle=style="background-color: #2f4f4f;">
+<div class="container-fluid" style="background-image: url(images/background_by_hadouuuken-dc9yxs6.png);">
+  <div class="container-fluid" sstyle="background-image: url(images/background_by_hadouuuken-dc9yxs6.png);">
     <div class="col-lg-offset-4 col-md-offset-4">
       <div class="dropdown pull-left">
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hot Esy<span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li><button class onClick="load('phones')"> Sleeping </button></li>
-                <li><button onClick="load('laptops')"> In Bed </button></li>
+              <li><button class onClick="load('phones')"> Sleeping ESY </button></li>
+                <li><button onClick="load('laptops')"> In Bed ESY </button></li>
             </ul>
         </div>
  
@@ -122,10 +122,10 @@ function othersStatus(productId,i)
         </div>
         
         <div class="dropdown pull-left">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Budget Esy <span class="caret"></span></button>
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Budget ESy <span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li><button onClick="load('bucket')"> 7-11 </button></li>
-                <li><button onClick="load('mattress')"> Don Pepot's </button></li>
+              <li><button onClick="load('bucket')"> 7-11 ESy </button></li>
+                <li><button onClick="load('mattress')"> Don Pepot's ESy </button></li>
             </ul>
         </div>
      </div>
