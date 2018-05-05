@@ -98,34 +98,34 @@ function othersStatus(productId,i)
   <div class="container-fluid" style="background-color: #2f4f4f;">
     <div class="col-lg-offset-4 col-md-offset-4">
       <div class="dropdown pull-left">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">gadgets <span class="caret"></span></button>
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hot ESy<span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li><button class onClick="load('phones')"> phones </button></li>
-                <li><button onClick="load('laptops')"> laptops </button></li>
+              <li><button class onClick="load('phones')"> Sleeping ESY </button></li>
+                <li><button onClick="load('laptops')"> In Bed ESY </button></li>
             </ul>
         </div>
  
         <div class="dropdown pull-left">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">study materials <span class="caret"></span></button>
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Deluxe Esy <span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li><button onClick="load('books')"> books </button></li>
-                <li><button onClick="load('notes')"> notes </button></li>
+              <li><button onClick="load('books')"> With Friends </button></li>
+                <li><button onClick="load('notes')"> Pogi Selfies </button></li>
             </ul>
         </div>
  
         <div class="dropdown pull-left">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">bicycles <span class="caret"></span></button>
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hot Esy <span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li><button onClick="load('cycle (boys)')"> for boys </button></li>
-                <li><button onClick="load('cycle (girls)')"> for girls </button></li>
+              <li><button onClick="load('cycle (boys)')"> shirtless </button></li>
+                <li><button onClick="load('cycle (girls)')"> nudes </button></li>
             </ul>
         </div>
         
         <div class="dropdown pull-left">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">lodging <span class="caret"></span></button>
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Budget ESy <span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li><button onClick="load('bucket')"> buckets </button></li>
-                <li><button onClick="load('mattress')"> mattress </button></li>
+              <li><button onClick="load('bucket')"> 7-11 ESy </button></li>
+                <li><button onClick="load('mattress')"> Don Pepot's ESy </button></li>
             </ul>
         </div>
      </div>
