@@ -94,8 +94,8 @@ function othersStatus(productId,i)
 
 
 
-<div class="container-fluid" style="background-image: url(images/background_by_hadouuuken-dc9yxs6.png);">
-  <div class="container-fluid" sstyle="background-image: url(images/background_by_hadouuuken-dc9yxs6.png);">
+<div class="container-fluid" id="background" style="background-image: url(images/background_by_hadouuuken-dc9yxs6.png);">
+  <div class="container-fluid">
     <div class="col-lg-offset-4 col-md-offset-4">
       <div class="dropdown pull-left">
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hot Esy<span class="caret"></span></button>
