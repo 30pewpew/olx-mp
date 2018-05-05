@@ -164,7 +164,7 @@ function deleteProduct(productId,i)
 	showheader("Upload an Item");
 	shownavigation($_SESSION['username']);
 	?>
-<div class="container-fluid" style="background-color: #2f4f4f;">
+<div class="container-fluid" style="background-image: url(images/background_by_hadouuuken-dc9yxs6.png);">
     
    
     <div class="row well col-lg-4 col-md-4 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-4 col-sm-offset-4 " style="background-color: #d3d3d3;" >
