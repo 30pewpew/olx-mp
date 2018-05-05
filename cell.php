@@ -95,10 +95,10 @@ function othersStatus(productId,i)
 
 
 <div class="container-fluid" style="background-color: #2f4f4f;">
-  <div class="container-fluid" style="background-color: #2f4f4f;">
+  <div class="container-fluid" sstyle=style="background-color: #2f4f4f;">
     <div class="col-lg-offset-4 col-md-offset-4">
       <div class="dropdown pull-left">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hot ESy<span class="caret"></span></button>
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hot Esy<span class="caret"></span></button>
             <ul class="dropdown-menu">
               <li><button class onClick="load('phones')"> Sleeping ESY </button></li>
                 <li><button onClick="load('laptops')"> In Bed ESY </button></li>
@@ -131,7 +131,7 @@ function othersStatus(productId,i)
      </div>
  </div>
 
-<div id="left" class="col-lg-3 col-md-3 col-sm-3 col-xs-3" style="background-color: #d3d3d3;" >
+<div id="left" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 >
     <?php
        $fp=fopen("itemlist.txt","r");
        $a;

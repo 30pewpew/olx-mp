@@ -99,7 +99,7 @@ header('Location:index.php');
 	shownavigation();
 ?>
 
-    <div class="container-fluid" style="background-color:#2f4f4f">
+    <div class="container-fluid" style="background-image: url(images/background_by_hadouuuken-dc9yxs6.png);">
     <form action="myProfile.php" method="post">
     	<div class="row">
             <div class="form-group col-lg-3 col-md-3 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-3 col-sm-offset-3">
