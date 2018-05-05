@@ -6,3 +6,4 @@ bucket
 notes
 phones
 laptops
+shirtless
