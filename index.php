@@ -121,38 +121,51 @@
   showheader("home");
 ?>
         
-        <div class="row" style="background-color: #2f4f4f;">
-            <div class="well col-lg-4 col-md-4 col-sm-4 col-xs-4 col-lg-offset-1 col-md-offset-1 col-xs-offset-1 col-sm-offset-1 ">
+        <div class="row" style="background-image: url(uploads/40.jpg); display: block; margin-left: auto; margin-right: auto; background-position: center center;background-repeat: no-repeat; background-size: cover; height: 786px;">
+            <div class="well col-lg-4 col-md-4 col-sm-4 col-xs-4 col-lg-offset-1 col-md-offset-1 col-xs-offset-1 col-sm-offset-1" style="margin-top: 25px; margin-left: 25px; padding: 35px;">
+
+                <img src = "images/esy_buys.png" align = "middle" style = "margin-left: 17%; margin-top: -4%; width: 375px; height: 105px;">
+                </img>
+
+                <br>
+                <br>
+                <h4 style="text-align:center; margin-top: -2%;"><span class="label label-default">BUY</span> <span class="label label-default">SELL</span> <span class="label label-default">LEND</span> <span class="label label-default">BORROW</span></h4>
                 
                 <!-- CREATE ACCOUNT-->
                 <h2>REGISTER <span class="glyphicon glyphicon-exclamation-sign"></span></h2>
                 <form action="index.php" method="post">
                     <div class="form-group">
+                        <span class="glyphicon glyphicon-user"></span>
                         <label for="username">Username:</label>
                         <input type="text" name="new_username" class="form-control" value="" maxlength="30" required>
                     </div>
 
                     <div class="form-group">
+                        <span class="glyphicon glyphicon-edit"></span>
                         <label for="fullname">Name:</label>
                         <input type="text" name="new_userfullname" class="form-control" value="" maxlength="30" required>
                     </div>
 
                     <div class="form-group">
+                        <span class="glyphicon glyphicon-earphone"></span>
                         <label for="phoneno">Phone number: </label>
                         <input type="text" name="new_userphoneno" class="form-control" value="" maxlength="10" required>
                     </div>
                     
                     <div class="form-group">
+                        <span class="glyphicon glyphicon-envelope"></span>
                         <label for="EMAIL">Email: </label>
                         <input type="email" name="email" class="form-control" maxlength="41" required>
                     </div>
                     
                     <div class="form-group">
+                        <span class="glyphicon glyphicon-lock"></span>
                         <label for="password">Password: </label>
                         <input type="password" name="new_password" class="form-control" maxlength="41" required>
                     </div>
                     
                     <div class="form-group">
+                        <span class="glyphicon glyphicon-ok-sign"></span>
                         <label for="password">Confirm Password: </label>
                         <input type="password" name="new_confpassword" class="form-control" maxlength="41" required>
                     </div>
@@ -161,15 +174,17 @@
             </div>
             
             <!-- LOGIN -->           
-            <div class="well col-lg-3 col-md-3 col-sm-3 col-xs-3 col-lg-offset-3 col-md-offset-3 col-xs-offset-3 col-sm-offset-3">
+            <div class="well col-lg-3 col-md-3 col-sm-3 col-xs-3 col-lg-offset-3 col-md-offset-3 col-xs-offset-3 col-sm-offset-3" style="margin-top: 175px; margin-left: 745px; padding: 35px">
                 <h3 style="underline">LOGIN <span class="glyphicon glyphicon-ok"></span></h3>
                 <form action="index.php" method="post">
                     <div class="form-group">
+                        <span class="glyphicon glyphicon-user"></span>
                         <label for="username">Username: </label>
                         <input type="text" name="username" class="form-control" value="<?php if(isset($_POST['username'])) echo $_POST['username'];?>" maxlength="30" required>
                     </div>
                     
                     <div class="form-group">
+                        <span class="glyphicon glyphicon-lock"></span>
                         <label for="password">Password: </label>
                         <input type="password" name="password" size="4" class="form-control" maxlength="41" required>
                     </div>
@@ -193,7 +208,6 @@
                 echo '</div>';
             ?>
           </div>
-        </div> 
-        
+        </div>    
     </body>
 </html>
