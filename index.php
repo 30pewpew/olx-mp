@@ -142,37 +142,37 @@
                     <div class="form-group">
                         <span class="glyphicon glyphicon-user"></span>
                         <label for="username">Username:</label>
-                        <input type="text" name="new_username" class="form-control" value="" maxlength="30" required>
+                        <input type="text" name="new_username" class="form-control" value="" maxlength="30" placeholder="Enter a username" required>
                     </div>
 
                     <div class="form-group">
                         <span class="glyphicon glyphicon-edit"></span>
                         <label for="fullname">Name:</label>
-                        <input type="text" name="new_userfullname" class="form-control" value="" maxlength="30" required>
+                        <input type="text" name="new_userfullname" class="form-control" value="" maxlength="30" placeholder="Enter full name" required>
                     </div>
 
                     <div class="form-group">
                         <span class="glyphicon glyphicon-earphone"></span>
                         <label for="phoneno">Phone number: </label>
-                        <input type="text" name="new_userphoneno" class="form-control" value="" maxlength="10" required>
+                        <input type="text" name="new_userphoneno" class="form-control" value="" maxlength="10" placeholder="+63 " required>
                     </div>
                     
                     <div class="form-group">
                         <span class="glyphicon glyphicon-envelope"></span>
                         <label for="EMAIL">Email: </label>
-                        <input type="email" name="email" class="form-control" maxlength="41" required>
+                        <input type="email" name="email" class="form-control" maxlength="41" placeholder="Enter valid email" required>
                     </div>
                     
                     <div class="form-group">
                         <span class="glyphicon glyphicon-lock"></span>
                         <label for="password">Password: </label>
-                        <input type="password" name="new_password" class="form-control" maxlength="41" required>
+                        <input type="password" name="new_password" class="form-control" maxlength="41" placeholder="Password must be at least 6 characters" required>
                     </div>
                     
                     <div class="form-group">
                         <span class="glyphicon glyphicon-ok-sign"></span>
                         <label for="password">Confirm Password: </label>
-                        <input type="password" name="new_confpassword" class="form-control" maxlength="41" required>
+                        <input type="password" name="new_confpassword" class="form-control" maxlength="41" placeholder="Enter password again" required>
                     </div>
                     <button input type="submit" name="signin_submit" class="btn btn-lg btn-danger">Create Account</button>             
                 </form>
@@ -185,16 +185,16 @@
                     <div class="form-group">
                         <span class="glyphicon glyphicon-user"></span>
                         <label for="username">Username: </label>
-                        <input type="text" name="username" class="form-control" value="<?php if(isset($_POST['username'])) echo $_POST['username'];?>" maxlength="30" required>
+                        <input type="text" name="username" class="form-control" value="<?php if(isset($_POST['username'])) echo $_POST['username'];?>" maxlength="30" placeholder="Enter a username" required>
                     </div>
                     
                     <div class="form-group">
                         <span class="glyphicon glyphicon-lock"></span>
                         <label for="password">Password: </label>
-                        <input type="password" name="password" size="4" class="form-control" maxlength="41" required>
+                        <input type="password" name="password" size="4" class="form-control" maxlength="41" placeholder="Password must be at least 6 characters" required>
                     </div>
                     
-                    <button input type="submit" class="btn btn-primary" name="login_submit">Login</button>
+                    <button input type="submit" name="login_submit" class="btn btn-primary">Login</button>
                     <a href="forgotpassword.php">Forgot Password?</a>
                 </form>
             </div>
