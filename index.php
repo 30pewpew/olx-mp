@@ -120,13 +120,18 @@
   require_once('commonbar.php');
   showheader("home");
 ?>
-        
-        <div class="row" style="background-image: url(uploads/40.jpg); display: block; margin-left: auto; margin-right: auto; background-position: center center;background-repeat: no-repeat; background-size: cover; height: 786px;">
-            <div class="well col-lg-4 col-md-4 col-sm-4 col-xs-4 col-lg-offset-1 col-md-offset-1 col-xs-offset-1 col-sm-offset-1" style="margin-top: 25px; margin-left: 25px; padding: 35px;">
+        <!-- 786px -->
+        <div class="row" style="background-image: url(uploads/40.jpg); display: block; margin-left: auto; margin-right: auto; background-position: center center;background-repeat: no-repeat; background-size: cover; height: 81.4vh;">
+            <div class="well col-lg-4 col-md-4 col-sm-4 col-xs-4 col-lg-offset-1 col-md-offset-1 col-xs-offset-1 col-sm-offset-1" style="margin-top: 25px; margin-left: 25px; padding: 30px;">
 
-                <img src = "images/esy_buys.png" align = "middle" style = "margin-left: 17%; margin-top: -4%; width: 375px; height: 105px;">
-                </img>
 
+
+                <a href="index.php"> 
+                    <img src = "images/esy_buys.png" style="margin-left: 17%; margin-top: -5%; width: 375px; height: 105px;">
+                    </img>
+                </a>
+
+                
                 <br>
                 <br>
                 <h4 style="text-align:center; margin-top: -2%;"><span class="label label-default">BUY</span> <span class="label label-default">SELL</span> <span class="label label-default">LEND</span> <span class="label label-default">BORROW</span></h4>
@@ -174,7 +179,7 @@
             </div>
             
             <!-- LOGIN -->           
-            <div class="well col-lg-3 col-md-3 col-sm-3 col-xs-3 col-lg-offset-3 col-md-offset-3 col-xs-offset-3 col-sm-offset-3" style="margin-top: 175px; margin-left: 745px; padding: 35px">
+            <div class="well col-lg-3 col-md-3 col-sm-3 col-xs-3 col-lg-offset-3 col-md-offset-3 col-xs-offset-3 col-sm-offset-3" style="margin-top: 175px; margin-left: 39%; padding: 35px">
                 <h3 style="underline">LOGIN <span class="glyphicon glyphicon-ok"></span></h3>
                 <form action="index.php" method="post">
                     <div class="form-group">
