@@ -1,201 +1,224 @@
 <?php
-session_start();
-if(!isset($_SESSION['ID']))
-header('Location:index.php');
-require_once('include/config.inc.php');
-require_once('include/connect.inc.php');
-if(isset($_FILES['uploaded_image']['name'])&& isset($_POST['price'])&&isset($_POST['type'])&&isset($_POST['description']))
-{
-	$tempname=$_FILES['uploaded_image']['tmp_name'];
-	$minprice=$_POST['price'];
-	$prdcttype=$_POST['type'];
-	$description=$_POST['description'];
-  if(!empty($tempname)&&!empty($minprice)&&!empty($prdcttype)&&!empty($description))
-	{
-		$name=$_FILES['uploaded_image']['name'];
-		$size=$_FILES['uploaded_image']['size'];
-		$type=$_FILES['uploaded_image']['type'];
-		$prdcttype=trim($prdcttype);
-		$maxsize=3713052;
-    $extension=strtolower(substr($name,strpos($name,'.')+1));
-		if(($extension=='jpg'||$extension=='jpeg')&&$type=='image/jpeg'&&$size<=$maxsize)
-		{
-		if(move_uploaded_file($tempname,'uploads/'.$name))
-		{
-			$query="insert into products(userId,category,minPrice,description) value(?,?,?,?)";
-            try{
-            $query_prepare=$conn->prepare($query);
-            $query_prepare->execute(array($_SESSION['ID'],$prdcttype,$minprice,$description));
-            $query2="select productId from products where userId=? order by uploadedTime DESC limit 1 ";
-            $query_prepare2=$conn->prepare($query2);
-            $query_prepare2->execute(array($_SESSION['ID']));
-            $aa=$query_prepare2->fetch();
-            rename('uploads/'.$name,'uploads/'.$aa['productId'].'.jpg');
+    session_start();
+    if(!isset($_SESSION['ID']))
+    header('Location:index.php');
 
-            }
-            catch(PDOException $es)
+    // Dependencies
+    require_once('include/config.inc.php');
+    require_once('include/connect.inc.php');
+
+    if(isset($_FILES['uploaded_image']['name']) && isset($_POST['price']) && isset($_POST['type']) && isset($_POST['description']))
+    {
+        $tempname = $_FILES['uploaded_image']['tmp_name'];
+        $minprice = $_POST['price'];
+        $prdcttype = $_POST['type'];
+        $description = $_POST['description'];
+
+        if(!empty($tempname) && !empty($minprice) && !empty($prdcttype) && !empty($description))
+        {
+            $name = $_FILES['uploaded_image']['name'];
+            $size = $_FILES['uploaded_image']['size'];
+            $type = $_FILES['uploaded_image']['type'];
+            $prdcttype = trim($prdcttype);
+            $maxsize = 3713052;
+            $extension = strtolower(substr($name,strpos($name,'.')+1));
+
+            if(($extension =='jpg' || $extension == 'jpeg') && $type == 'image/jpeg' && $size <= $maxsize)
             {
-             echo 'some error occur ',$e->getMessage();
-            }
-          // PDOStatement object
-		}
-		else
-		echo 'no file uploaded';
+                if(move_uploaded_file($tempname,'uploads/'.$name))
+                {
+                    $query = "INSERT INTO products(userId,category,minPrice,description) value(?,?,?,?)";
+                    try
+                    {
+                        $query_prepare = $conn -> prepare($query);
+                        $query_prepare -> execute(array($_SESSION['ID'],$prdcttype,$minprice,$description));
+                        $query2 = "SELECT productId FROM products WHERE userId=? ORDER BY uploadedTime DESC limit 1 ";
+                        $query_prepare2 = $conn -> prepare($query2);
+                        $query_prepare2 -> execute(array($_SESSION['ID']));
+                        $aa = $query_prepare2 -> fetch();
+                        rename('uploads/'.$name,'uploads/'.$aa['productId'].'.jpg');
+                    }
+
+                    catch(PDOException $es)
+                    {
+                        echo 'An error occurred ',$e->getMessage();
+                    }
+                }
+
+                else
+                  echo 'No File Was Uploaded';
+                }
+            else 
+                echo '<b>*Image should be in jpeg or jpg format and size should be less than 3713052 Bytes</b>';
         }
-        else 
-          echo '<b>*image should be in jpeg or jpg format and size should be less than 3713052 Bytes</b>';
-	}
-}
+    }
 ?>
 
 <script type="text/javascript">
 function getXmlHttpObject()
 {
-  var xmlhttp=null;
-  try
-  {
-     xmlhttp=new XMLHttpRequest();     
-  }
-  catch(e)
-  {
-     try
-     {
-      xmlhttp=new ActiveXObject("Msxml2.XMLHTTP");
-     }
-     catch(e)
-     {
-       xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-     }
-  }
-  return xmlhttp;
+    var xmlhttp = null;
+    try
+    {
+        xmlhttp=new XMLHttpRequest();     
+    }
+
+    catch(e)
+    {
+        try
+        {
+            xmlhttp=new ActiveXObject("Msxml2.XMLHTTP");
+        }
+
+        catch(e)
+        {
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+    }
+    return xmlhttp;
 }
 
 function acceptorholdRequest(serialNo,i)
 {
-  var xmlhttp=null;
-  var id='showDetails'+serialNo;
-  var xmlhttp=getXmlHttpObject();
-  xmlhttp.onreadystatechange=function(){
-  if(xmlhttp.readyState==4&&xmlhttp.status==200)
+  var xmlhttp = null;
+  var id = 'showDetails' + serialNo;
+  var xmlhttp = getXmlHttpObject();
+  xmlhttp.onreadystatechange = function()
   {
-     document.getElementById(id).innerHTML=xmlhttp.responseText;
+      if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
+      {
+         document.getElementById(id).innerHTML = xmlhttp.responseText;
+      }
   }
-  }
-  if(document.getElementById('acceptorholdRequest'+serialNo).innerHTML=="Accept")
+  if(document.getElementById('acceptorholdRequest'+ serialNo).innerHTML == "Accept")
   {
-     var url='acceptRequest.php?serialNo='+serialNo;
+     var url = 'acceptRequest.php?serialNo=' + serialNo;
      xmlhttp.open('GET',url,true);
      xmlhttp.send();
-     document.getElementById('acceptorholdRequest'+serialNo).innerHTML="Hold";
+     document.getElementById('acceptorholdRequest'+ serialNo).innerHTML = "Hold";
   }
-  else if(document.getElementById('acceptorholdRequest'+serialNo).innerHTML=="Hold")
+  else if(document.getElementById('acceptorholdRequest'+ serialNo).innerHTML == "Hold")
   {
-     var url='holdRequest.php?serialNo='+serialNo;
+     var url = 'holdRequest.php?serialNo=' + serialNo;
      xmlhttp.open('GET',url,true);
      xmlhttp.send();
-     document.getElementById('acceptorholdRequest'+serialNo).innerHTML="Accept";
+     document.getElementById('acceptorholdRequest' + serialNo).innerHTML = "Accept";
   }
   else;
 }
 
 function declineRequest(serialNo,i)
 {
-  var xmlhttp=null;
-  var id='request'+serialNo;
-  var xmlhttp=getXmlHttpObject();
-  xmlhttp.onreadystatechange=function(){
-  if(xmlhttp.readyState==4&&xmlhttp.status==200)
-  {
-     document.getElementById(id).innerHTML=xmlhttp.responseText;
-  }
-  }
-     var url='declineRequest.php?serialNo='+serialNo;
-     xmlhttp.open('GET',url,true);
-     xmlhttp.send();
-	 document.getElementById(id).innerHTML=''; 
+    var xmlhttp = null;
+    var id = 'request' + serialNo;
+    var xmlhttp = getXmlHttpObject();
+    xmlhttp.onreadystatechange = function()
+    {
+        if(xmlhttp.readyState == 4 && xmlhttp.status==200)
+        {
+            document.getElementById(id).innerHTML=xmlhttp.responseText;
+        }
+    }
+    
+    var url = 'declineRequest.php?serialNo=' + serialNo;
+    xmlhttp.open('GET',url,true);
+    xmlhttp.send();
+    document.getElementById(id).innerHTML = ''; 
 }
 
 function showRequests(productId,i)
 {
-  var xmlhttp=null;
-  var id='showRequests'+i;
-  var inner=document.getElementById('requests'+i).innerHTML;
-  var xmlhttp=getXmlHttpObject();
-  xmlhttp.onreadystatechange=function(){
-  if(xmlhttp.readyState==4&&xmlhttp.status==200)
-  {
-     document.getElementById(id).innerHTML=xmlhttp.responseText;
-  }
-  }
-  if(inner=='See Requests')
-  {
-  var url='showRequests.php?productId='+productId;
-  xmlhttp.open('GET',url,true);
-  xmlhttp.send();
-  document.getElementById('requests'+i).innerHTML='Hide';
-  }
-  else
-  {
-     document.getElementById('requests'+i).innerHTML='See Requests';
-     document.getElementById(id).innerHTML="";
-  }
+    var xmlhttp = null;
+    var id = 'showRequests' + i;
+    var inner = document.getElementById('requests' + i).innerHTML;
+    var xmlhttp = getXmlHttpObject();
+    xmlhttp.onreadystatechange = function()
+    {
+        if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
+        {
+           document.getElementById(id).innerHTML = xmlhttp.responseText;
+        }
+    }
+    if(inner == 'See Requests')
+    {
+        var url = 'showRequests.php?productId=' + productId;
+        xmlhttp.open('GET',url,true);
+        xmlhttp.send();
+        document.getElementById('requests' + i).innerHTML = 'Hide';
+    }
+    else
+    {
+       document.getElementById('requests' + i).innerHTML = 'See Requests';
+       document.getElementById(id).innerHTML = "";
+    }
 }
 
 function deleteProduct(productId,i)
 {
-  var xmlhttp=null;
-  var id=i;
-  var xmlhttp=getXmlHttpObject();
-  xmlhttp.onreadystatechange=function(){
-  if(xmlhttp.readyState==4&&xmlhttp.status==200)
-  {
-     document.getElementById(id).innerHTML=xmlhttp.responseText;
-  }
-  }
-     var url='deleteProduct.php?productId='+productId;
-     xmlhttp.open('GET',url,true);
-     xmlhttp.send(); 
+    var xmlhttp = null;
+    var id = i;
+    var xmlhttp = getXmlHttpObject();
+    xmlhttp.onreadystatechange = function()
+    {
+        if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
+        {
+           document.getElementById(id).innerHTML = xmlhttp.responseText;
+        }
+    }
+       var url = 'deleteProduct.php?productId=' + productId;
+       xmlhttp.open('GET',url,true);
+       xmlhttp.send(); 
 }
 </script>
 
 <?php
-	require_once('commonbar.php');
+  // Dependencies
+  require_once('commonbar.php');
 	require_once('navigation.php');
-	showheader("Upload an Item");
+	showheader("Sell A Product");
 	shownavigation($_SESSION['username']);
-	?>
-<div class="container-fluid" style="background-image: url(images/background_by_hadouuuken-dc9yxs6.png);">
+?>
+<div class="container-fluid" style="background-color: cyan; height: 77%;">
     
-   
-    <div class="row well col-lg-4 col-md-4 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-4 col-sm-offset-4 " style="background-color: #d3d3d3;" >
-      <h2 style="text-align:center">Item Information</h2>
+    <div class="row well col-lg-4 col-md-4 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-4 col-sm-offset-4 " style="background-color: #d3d3d3; margin-top: 2%; margin-left: 23%; padding: 2%; width: 55%; height: 90%; " >
+      <h2 style="text-align:center">Product Information</h2>
         <form action="seller.php" method="post" enctype="multipart/form-data">
+            <br>
+            <br>
             <div class="form-group">
-                <label for="uploaded_image">Upload Image</label>
+                <label for="uploaded_image">Upload Product Image</label>
                 <input type="file" name="uploaded_image"><p class="help-block" required>
             </div>
+
+            <br>
             <div class="form-group">
-                <label for="price">Minimum price</label>
-                <input type="text" name="price" class="form-control" placeholder="in Rupees" required>
+                <label for="price">Minimum Price</label>
+                <input type="number" name="price" class="form-control" placeholder="in Philippine Pesos" required>
             </div>
+
+            <br>
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea class="form-control" rows="5" name="description" placeholder="Give a description" required></textarea>
+                <textarea class="form-control" rows="5" name="description" placeholder="Enter a description" required></textarea>
             </div>
-            <div class="form-group">Type
+
+            <br>
+            <div class="form-group">
+                <label for="type">Type</label>
                 <select name="type" size ="1" id="type" class="form-control" required>
                 <?php
-                $fp=fopen("itemlist.txt","r");
-                while($read=fgets($fp))
-                {
-                    ?>
+                  $fp=fopen("itemlist.txt","r");
+                  while($read = fgets($fp))
+                  {
+                ?>
                     <option value="<?php echo $read;?>"><?php echo $read;?></option>
                 <?php
-                }
-                fclose($fp);
+                  }
+                  fclose($fp);
                 ?>
                 </select>
             </div>
+            <br>
             <button input type="submit" class="btn btn-primary">Upload</button>
         </form>
     </div>

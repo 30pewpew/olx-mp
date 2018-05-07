@@ -1,112 +1,117 @@
 <?php
-session_start();
-if(!isset($_SESSION['ID']))
-header("Location:index.php");
+  session_start();
+  if(!isset($_SESSION['ID']))
+  // Dependencies
+  header("Location:index.php");
   require_once('commonbar.php');
   require_once('navigation.php');
-  showheader("home");
+  showheader("BUY");
   shownavigation();
-
 ?>
-<script type="text/javascript">
+  <!-- Javascript Code -->
+  <script type="text/javascript">
 
-var start=0;
-function load(category)
-{
-  start=0;
-  var xmlhttp=getXmlHttpObject();
-  xmlhttp.onreadystatechange=function(){
-  if(xmlhttp.readyState==4&&xmlhttp.status==200)
+  var start=0;
+  function load(category)
   {
-     document.getElementById("center").innerHTML=xmlhttp.responseText;
+    start=0;
+    var xmlhttp=getXmlHttpObject();
+    xmlhttp.onreadystatechange=function()
+    {
+      if(xmlhttp.readyState==4&&xmlhttp.status==200)
+      {
+         document.getElementById("center").innerHTML=xmlhttp.responseText;
+      }
+    }
+    var url='getProduct.php?pname='+category+'&start='+start;
+    xmlhttp.open('GET',url,true);
+    xmlhttp.send();
   }
-  }
-  var url='getProduct.php?pname='+category+'&start='+start;
-  xmlhttp.open('GET',url,true);
-  xmlhttp.send();
-}
 
-function increment(category)
-{
-  start=start+3;
-  var xmlhttp=getXmlHttpObject();
-  xmlhttp.onreadystatechange=function(){
-  if(xmlhttp.readyState==4&&xmlhttp.status==200)
+  function increment(category)
   {
-     document.getElementById("center").innerHTML=xmlhttp.responseText;
+    start=start+3;
+    var xmlhttp=getXmlHttpObject();
+    xmlhttp.onreadystatechange=function()
+    {
+      if(xmlhttp.readyState==4&&xmlhttp.status==200)
+      {
+         document.getElementById("center").innerHTML=xmlhttp.responseText;
+      }
+    }
+    var url='getProduct.php?pname='+category+'&start='+start;
+    xmlhttp.open('GET',url,true);
+    xmlhttp.send();
   }
-  }
-  var url='getProduct.php?pname='+category+'&start='+start;
-  xmlhttp.open('GET',url,true);
-  xmlhttp.send();
-}
 
-function decrement(category)
-{
-  start=start-3;
-  var xmlhttp=getXmlHttpObject();
-  xmlhttp.onreadystatechange=function(){
-  if(xmlhttp.readyState==4&&xmlhttp.status==200)
+  function decrement(category)
   {
-     document.getElementById("center").innerHTML=xmlhttp.responseText;
+    start=start-3;
+    var xmlhttp=getXmlHttpObject();
+    xmlhttp.onreadystatechange=function()
+    {
+      if(xmlhttp.readyState==4&&xmlhttp.status==200)
+      {
+         document.getElementById("center").innerHTML=xmlhttp.responseText;
+      }
+    }
+    var url='getProduct.php?pname='+category+'&start='+start;
+    xmlhttp.open('GET',url,true);
+    xmlhttp.send();
   }
-  }
-  var url='getProduct.php?pname='+category+'&start='+start;
-  xmlhttp.open('GET',url,true);
-  xmlhttp.send();
-}
 
-function sendRequest(productId,i)
-{
-  var xmlhttp=null;
-  var id="showStatus"+i;
-  var bidPrice=document.getElementById('bidPrice'+i).value;
-  var xmlhttp=getXmlHttpObject();
-  xmlhttp.onreadystatechange=function(){
-  if(xmlhttp.readyState==4&&xmlhttp.status==200)
+  function sendRequest(productId,i)
   {
-     document.getElementById(id).innerHTML=xmlhttp.responseText;
+    var xmlhttp=null;
+    var id="showStatus"+i;
+    var bidPrice=document.getElementById('bidPrice'+i).value;
+    var xmlhttp=getXmlHttpObject();
+    xmlhttp.onreadystatechange=function()
+    {
+      if(xmlhttp.readyState==4&&xmlhttp.status==200)
+      {
+         document.getElementById(id).innerHTML=xmlhttp.responseText;
+      }
+    }
+    var url='sendRequest.php?productId='+productId+'&bidPrice='+bidPrice;
+    xmlhttp.open('GET',url,true);
+    xmlhttp.send();
+    document.getElementById('forBid'+i).innerHTML="";
+    othersStatus(productId,i);
   }
-  }
-  var url='sendRequest.php?productId='+productId+'&bidPrice='+bidPrice;
-  xmlhttp.open('GET',url,true);
-  xmlhttp.send();
-  document.getElementById('forBid'+i).innerHTML="";
-  othersStatus(productId,i);
-}
 
-function othersStatus(productId,i)
-{
-  var xmlhttp=null;
-  var id="othersStatus"+i;
-  var xmlhttp=getXmlHttpObject();
-  xmlhttp.onreadystatechange=function(){
-  if(xmlhttp.readyState==4&&xmlhttp.status==200)
+  function othersStatus(productId,i)
   {
-     document.getElementById(id).innerHTML=xmlhttp.responseText;
-  }
-  }
-  var url='othersStatus.php?productId='+productId;
-  xmlhttp.open('GET',url,true);
-  xmlhttp.send();
-  }
+    var xmlhttp=null;
+    var id="othersStatus"+i;
+    var xmlhttp=getXmlHttpObject();
+    xmlhttp.onreadystatechange=function()
+    {
+      if(xmlhttp.readyState==4&&xmlhttp.status==200)
+      {
+         document.getElementById(id).innerHTML=xmlhttp.responseText;
+      }
+    }
+    var url='othersStatus.php?productId='+productId;
+    xmlhttp.open('GET',url,true);
+    xmlhttp.send();
+    }
 </script>
 
-
-
-<div class="container-fluid" id="background" style="background-image: url(images/background_by_hadouuuken-dc9yxs6.png);">
+<!-- CONTAINER -->
+<div class="container-fluid" id="background" style="background-color: cyan; display: block; margin-left: auto; margin-right: auto; background-position: 35% 50%;background-repeat: no-repeat; background-size: cover; height: 100%;">
   <div class="container-fluid">
     <div class="col-lg-offset-4 col-md-offset-4">
+      <br>
       <div class="dropdown pull-left">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hot Esy<span class="caret"></span></button>
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hot<span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li><button class onClick="load('phones')"> Sleeping ESY </button></li>
-                <li><button onClick="load('laptops')"> In Bed ESY </button></li>
+              <li><button class onClick="load('phones')"> Sleeping </button></li>
+                <li><button onClick="load('laptops')"> In Bed </button></li>
             </ul>
         </div>
- 
         <div class="dropdown pull-left">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Deluxe Esy <span class="caret"></span></button>
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Deluxe <span class="caret"></span></button>
             <ul class="dropdown-menu">
               <li><button onClick="load('books')"> With Friends </button></li>
                 <li><button onClick="load('notes')"> Pogi Selfies </button></li>
@@ -114,18 +119,18 @@ function othersStatus(productId,i)
         </div>
  
         <div class="dropdown pull-left">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hot Esy <span class="caret"></span></button>
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hot <span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li><button onClick="load('cycle (boys)')"> shirtless </button></li>
-                <li><button onClick="load('cycle (girls)')"> nudes </button></li>
+              <li><button onClick="load('shirtless')"> Shirtless </button></li>
+                <li><button onClick="load('cycle (girls)')"> Nudes </button></li>
             </ul>
         </div>
         
         <div class="dropdown pull-left">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Budget ESy <span class="caret"></span></button>
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Budget <span class="caret"></span></button>
             <ul class="dropdown-menu">
-              <li><button onClick="load('bucket')"> 7-11 ESy </button></li>
-                <li><button onClick="load('mattress')"> Don Pepot's ESy </button></li>
+              <li><button onClick="load('bucket')"> 7-11 </button></li>
+                <li><button onClick="load('mattress')"> Budget </button></li>
             </ul>
         </div>
      </div>

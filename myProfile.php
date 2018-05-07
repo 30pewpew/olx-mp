@@ -95,52 +95,64 @@ header('Location:index.php');
 <?php
 	require_once('commonbar.php');
 	require_once('navigation.php');
-	showheader("Edit your Details");
+	showheader("Edit Profile");
 	shownavigation();
 ?>
 
-    <div class="container-fluid" style="background-image: url(images/background_by_hadouuuken-dc9yxs6.png);">
+    <div class="container-fluid" style="background-color: cyan; height: 77%;">
+    <div class="row well col-lg-3 col-md-3 col-sm-3 col-xs-12 col-lg-offset-3 col-md-offset-4 col-sm-offset-4" style="background-color: #d3d3d3; margin-top: 3%; margin-left: 10%; padding: 1%; width: 35%; height: 88%;">
+      <h2 style="text-align:center">Edit Profile Information</h2>
+
+  </div>
+
+  <div class="row well col-lg-3 col-md-3 col-sm-3 col-xs-12 col-lg-offset-3 col-md-offset-4 col-sm-offset-4" style="background-color: #d3d3d3; margin-top: 3%; margin-left: 10%; padding: 1%; width: 35%; height: 88%;">
+    <h2 style="text-align:center"><span class="glyphicon glyphicon-user"></span> User Account</h2>
     <form action="myProfile.php" method="post">
-    	<div class="row">
-            <div class="form-group col-lg-3 col-md-3 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-3 col-sm-offset-3">
-            <label for="username"><span style="color:#98CCDF">Username: </span></label>
+      <div class="row">
+            <br>
+            <div class="form-group col-lg-4 col-lg-offset-1">
+            <label for="username"><span style="color: #434a56">Username: </span></label>
             <input type="text" name="new_username" class="form-control" value="<?php echo $row['username'];?>" maxlength="30">
             </div>
         </div>
-        <button input type="submit" name="username_submit" class="btn  btn-primary col-lg-offset-4 col-md-offset-3 col-sm-offset-3">Change Username</button> 
+        <button input type="submit" name="username_submit" class="btn  btn-primary col-lg-3 col-lg-offset-1">Change Username</button> 
     </form>
     <form action="myProfile.php" method="post">
-  		<div class="row">
-           <div class="form-group col-lg-3 col-md-3 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-3 col-sm-offset-3">
-           <label for="fullname"><span style="color:#98CCDF">Name: </span></label>
+      <div class="row">
+            <br>
+            <br>
+           <div class="form-group col-lg-5 col-lg-offset-1">
+           <label for="fullname"><span style="color:#434a56">Full Name: </span></label>
            <input type="text" name="new_userfullname" class="form-control" value="<?php echo $row['name'];?>" maxlength="30">
            </div>
        </div>
        <div class="row">
-           <div class="form-group col-lg-3 col-md-3 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-3 col-sm-offset-3">
-           <label for="phoneno"><span style="color:#98CCDF">Phone Number: </span></label>
+           <div class="form-group col-lg-4 col-lg-offset-1">
+           <label for="phoneno"><span style="color:#434a56">Phone Number: </span></label>
            <input type="text" name="new_userphoneno" class="form-control" value="<?php echo $row['phoneno'];?>" maxlength="10">
            </div>
        </div>
-       <button input type="submit" name="signin_submit" class="btn  btn-primary col-lg-offset-4 col-md-offset-3 col-sm-offset-3">Update Details</button>                    
+       <button input type="submit" name="signin_submit" class="btn  btn-primary col-lg-3 col-lg-offset-1">Update Details</button>                    
     </form>
     
     <form action="myProfile.php" method="post">
       <div class="row">
-          <div class="form-group col-lg-3 col-md-3 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-3 col-sm-offset-3">
-           <label for="password"><span style="color:#98CCDF">New Password: </span></label>
-           <input type="password" name="new_password" class="form-control" maxlength="41">
+          <br>
+          <br>
+          <div class="form-group col-lg-6 col-lg-offset-1">
+           <label for="password"><span style="color:#434a56">New Password: </span></label>
+           <input type="password" name="new_password" class="form-control" placeholder="Password must be at least 6 characters" maxlength="41">
           </div>
       </div>
-	   <div class="row">
-           <div class="form-group col-lg-3 col-md-3 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-3 col-sm-offset-3">
-           <label for="password"><span style="color:#99CCDF">Confirm New Password: </span></label>
-           <input type="password" name="new_confpassword" class="form-control" maxlength="41">
+     <div class="row">
+          <div class="form-group col-lg-6 col-lg-offset-1">
+           <label for="password"><span style="color:#434a56">Confirm New Password: </span></label>
+           <input type="password" name="new_confpassword" class="form-control" placeholder="Confirm new password" maxlength="41">
            </div>
        </div>
-       <button input type="submit" name="changepass_submit" class="btn  btn-primary col-lg-offset-4 col-md-offset-3 col-sm-offset-3">Change Password</button>
+       <button input type="submit" name="changepass_submit" class="btn  btn-primary col-lg-3 col-lg-offset-1">Change Password</button>
     </form>
-    </div>
+  </div>
 
 	<?php
     if($string2!="")

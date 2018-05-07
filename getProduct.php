@@ -2,46 +2,55 @@
   session_start();
   if(!isset($_SESSION['ID']))
   header('Location:index.php');
-  if(isset($_GET['pname'])&&!empty($_GET['pname'])&&isset($_GET['start']))
+
+  if(isset($_GET['pname']) && !empty($_GET['pname']) && isset($_GET['start']))
   {
-   $product=$_GET['pname'];
-   $start=(int)$_GET['start'];
+   $product = $_GET['pname'];
+   $start = (int)$_GET['start'];
+
+   // Dependencies
    require_once('include/config.inc.php');
    require_once('include/connect.inc.php');
-   try{
-   $query='select COUNT(*) from products where category = ? and userId != ? ';
-   $query_prepare=$conn->prepare($query);
-   $query_prepare->execute(array($product,$_SESSION['ID'])); // PDOStatement object
-   $rows=$query_prepare->fetch();
-   $total_pages=((int)($rows['COUNT(*)']/3)==($rows['COUNT(*)']/3))?($rows['COUNT(*)']/3):(int)($rows['COUNT(*)']/3)+1;
-   if($total_pages == 0)
-   $total_pages=1;
-   $query='select* from products where category = ? and userId != ? limit '.$start.',3';
-   $query_prepare=$conn->prepare($query);
-   $query_prepare->execute(array($product,$_SESSION['ID'])); // PDOStatement object
-   $rows=$query_prepare->fetchAll();
-   $num_rows=count($rows);
-   $i=1;
-   foreach($rows as $row)
+
+   try
    {
-	 $query1='select COUNT(*) from requests where productId=? and buyerID=?';
-     $query_prepare1=$conn->prepare($query1);
-     $query_prepare1->execute(array($row['productId'],$_SESSION['ID'])); // PDOStatement object
-     $row1=$query_prepare1->fetch();
-     echo '<div id="'.$i.'" class="container-fluid well">';
-     echo '<div class="row col-lg-5 col-md-5 col-sm-5 col-xs-5"><image src="uploads/'.$row['productId'].'.jpg" height="150" width="150" alt="image not found" style="border-radius:5%"></div>';
-	 echo '<div class="row col-lg-7 col-md-7 col-sm-7 col-xs-7"><p><b>Category: </b>'.$row['category'].'</p>';
-	 echo '<p><b>Description: </b>'.$row['description'].'</p>';
-	 echo '<p><b>Base Price: </b>'.$row['minPrice'].'</p>';
-	 echo '<p><b>Time Uploaded: </b>'.$row['uploadedTime'].'</p>';
-	 if($row1['COUNT(*)']==0)
-	 {
-	    echo '<div id="forBid'.$i.'" class="form-inline">';
-	    echo '<input type="text" class="form-control" id="bidPrice'.$i.'" value="'.$row['minPrice'].'">';
-        echo '<button class="btn btn-md btn-primary" onClick="sendRequest('.$row['productId'].','.$i.')">Bid</button>';
-		echo '</div>';
-     }
-	 ?>
+      $query = 'SELECT COUNT(*) FROM products WHERE category = ? and userId != ? ';
+      $query_prepare = $conn-> prepare($query);
+      $query_prepare -> execute(array($product,$_SESSION['ID'])); // PDOStatement object
+      $rows = $query_prepare -> fetch();
+      $total_pages = ((int)($rows['COUNT(*)']/3)==($rows['COUNT(*)']/3))?($rows['COUNT(*)']/3):(int)($rows['COUNT(*)']/3)+1;
+
+      if($total_pages == 0)
+
+         $total_pages = 1;
+         $query = 'SELECT * FROM products WHERE category = ? and userId != ? limit '. $start .',3';
+         $query_prepare =$ conn -> prepare($query);
+         $query_prepare -> execute(array($product,$_SESSION['ID'])); // PDOStatement object
+         $rows = $query_prepare -> fetchAll();
+         $num_rows = count($rows);
+         $i = 1;
+
+    foreach($rows as $row)
+    {
+        $query1 = 'SELECT COUNT(*) FROM requests WHERE productId = ? and buyerID = ?';
+        $query_prepare1 = $conn -> prepare($query1);
+        $query_prepare1 -> execute(array($row['productId'],$_SESSION['ID'])); // PDOStatement object
+        $row1 = $query_prepare1 -> fetch();
+        echo '<div id="'. $i .'" class="container-fluid well">';
+        echo '<div class="row col-lg-5 col-md-5 col-sm-5 col-xs-5"><image src="uploads/'.$row['productId'].'.jpg" height="150" width="150" alt="image not found" style="border-radius:5%"></div>';
+        echo '<div class="row col-lg-7 col-md-7 col-sm-7 col-xs-7"><p><b>Category: </b>'.$row['category'].'</p>';
+        echo '<p><b>Description: </b>'.$row['description'].'</p>';
+        echo '<p><b>Base Price: </b>'.$row['minPrice'].'</p>';
+        echo '<p><b>Time Uploaded: </b>'.$row['uploadedTime'].'</p>';
+
+        if($row1['COUNT(*)']==0)
+        {
+            echo '<div id="forBid'.$i.'" class="form-inline">';
+            echo '<input type="text" class="form-control" id="bidPrice'.$i.'" value="'.$row['minPrice'].'">';
+            echo '<button class="btn btn-md btn-primary" onClick="sendRequest('.$row['productId'].','.$i.')">Bid</button>';
+            echo '</div>';
+        }
+?>
 	 <div id="<?php echo 'othersStatus'.$i;?>">
 	 <?php
 	 $query2='select COUNT(*),max(bidPrice) from requests where productId=?';

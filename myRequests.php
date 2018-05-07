@@ -85,9 +85,9 @@ function updateRequest(serialNo,i)
 	   $num_rows=count($rows);
 	   ?>
    
-   <div class="container-fluid" style="background-image: url(images/background_by_hadouuuken-dc9yxs6.png);">
+   <div class="container-fluid" style="background-color: cyan; height: 100%;">
     
-  	<?php echo '<h4 align="center" style="color:#98CCDF">You have made '.$num_rows.' requests till now </br> (after updating keep on refreshing the page)</h4>';?>
+  	<?php echo '<h4 align="center" style="color:#434a56">You have made '.$num_rows.' requests till now </br> (after updating keep on refreshing the page)</h4>';?>
   
    <?php
    		$i=1;
