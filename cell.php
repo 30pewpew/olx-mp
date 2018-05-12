@@ -15,31 +15,31 @@
   function load(category)
   {
     start=0;
-    var xmlhttp=getXmlHttpObject();
-    xmlhttp.onreadystatechange=function()
+    var xmlhttp = getXmlHttpObject();
+    xmlhttp.onreadystatechange = function()
     {
-      if(xmlhttp.readyState==4&&xmlhttp.status==200)
+      if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
       {
-         document.getElementById("center").innerHTML=xmlhttp.responseText;
+         document.getElementById("center").innerHTML = xmlhttp.responseText;
       }
     }
-    var url='getProduct.php?pname='+category+'&start='+start;
+    var url = 'getProduct.php?pname=' + category + '&start=' + start;
     xmlhttp.open('GET',url,true);
     xmlhttp.send();
   }
 
   function increment(category)
   {
-    start=start+3;
-    var xmlhttp=getXmlHttpObject();
-    xmlhttp.onreadystatechange=function()
+    start = start + 3;
+    var xmlhttp = getXmlHttpObject();
+    xmlhttp.onreadystatechange = function()
     {
-      if(xmlhttp.readyState==4&&xmlhttp.status==200)
+      if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
       {
-         document.getElementById("center").innerHTML=xmlhttp.responseText;
+         document.getElementById("center").innerHTML = xmlhttp.responseText;
       }
     }
-    var url='getProduct.php?pname='+category+'&start='+start;
+    var url = 'getProduct.php?pname=' + category + '&start=' + start;
     xmlhttp.open('GET',url,true);
     xmlhttp.send();
   }
@@ -73,26 +73,26 @@
          document.getElementById(id).innerHTML=xmlhttp.responseText;
       }
     }
-    var url='sendRequest.php?productId='+productId+'&bidPrice='+bidPrice;
+    var url = 'sendRequest.php?productId=' + productId + '&bidPrice=' + bidPrice;
     xmlhttp.open('GET',url,true);
     xmlhttp.send();
-    document.getElementById('forBid'+i).innerHTML="";
+    document.getElementById('forBid' + i).innerHTML = "";
     othersStatus(productId,i);
   }
 
   function othersStatus(productId,i)
   {
-    var xmlhttp=null;
-    var id="othersStatus"+i;
-    var xmlhttp=getXmlHttpObject();
-    xmlhttp.onreadystatechange=function()
+    var xmlhttp = null;
+    var id = "othersStatus"+i;
+    var xmlhttp = getXmlHttpObject();
+    xmlhttp.onreadystatechange = function()
     {
-      if(xmlhttp.readyState==4&&xmlhttp.status==200)
+      if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
       {
-         document.getElementById(id).innerHTML=xmlhttp.responseText;
+         document.getElementById(id).innerHTML = xmlhttp.responseText;
       }
     }
-    var url='othersStatus.php?productId='+productId;
+    var url = 'othersStatus.php?productId=' + productId;
     xmlhttp.open('GET',url,true);
     xmlhttp.send();
     }
@@ -101,38 +101,53 @@
 <!-- CONTAINER -->
 <div class="container-fluid" id="background" style="background-color: cyan; display: block; margin-left: auto; margin-right: auto; background-position: 35% 50%;background-repeat: no-repeat; background-size: cover; height: 100%;">
   <div class="container-fluid">
-    <div class="col-lg-offset-4 col-md-offset-4">
+    <div class="col-lg-12">
       <br>
-      <div class="dropdown pull-left">
-          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hot<span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <li><button class onClick="load('phones')"> Sleeping </button></li>
-                <li><button onClick="load('laptops')"> In Bed </button></li>
+      <!--
+      <div class="col-lg-3">
+          <ul class="nav nav-pills nav-stacked">
+              <li class="active">Home</li>
+              <li>Sleeping</li>
+              <li>In Bed</li>
+          </ul>
+      </div>
+      -->
+
+      <div class="col-lg-3">
+          <!--<button class="btn btn-primary dropdown-toggle col-lg-2" type="button"" style="width: 200%;">Hot<span class="caret"></span></button>-->
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="cell.php" style="font-family: Roboto; font-size: 125%">Plain</a></li>
+                <li><a onclick="load('Sleeping')">Sleeping</a></li>
+                <li><a onclick="load('Group')">Group</a></li>
             </ul>
-        </div>
-        <div class="dropdown pull-left">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Deluxe <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <li><button onClick="load('books')"> With Friends </button></li>
-                <li><button onClick="load('notes')"> Pogi Selfies </button></li>
+      </div>
+
+      <div class="col-lg-3">
+          <!--<button class="btn btn-primary dropdown-toggle col-lg-2" type="button"" style="width: 200%;">Hot<span class="caret"></span></button>-->
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="cell.php" style="font-family: Roboto; font-size: 125%">Pogi</a></li>
+                <li><a onclick="load('Flex')">Flex</a></li>
+                <li><a onclick="load('Gym')">Solo</a></li>
             </ul>
-        </div>
- 
-        <div class="dropdown pull-left">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Hot <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <li><button onClick="load('shirtless')"> Shirtless </button></li>
-                <li><button onClick="load('cycle (girls)')"> Nudes </button></li>
+      </div>
+
+      <div class="col-lg-3">
+          <!--<button class="btn btn-primary dropdown-toggle col-lg-2" type="button"" style="width: 200%;">Hot<span class="caret"></span></button>-->
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="cell.php" style="font-family: Roboto; font-size: 125%">Normal</a></li>
+                <li><a onclick="load('Selfies')">Selfies</a></li>
+                <li><a onclick="load('Pair')">Pair</a></li>
             </ul>
-        </div>
-        
-        <div class="dropdown pull-left">
-            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Budget <span class="caret"></span></button>
-            <ul class="dropdown-menu">
-              <li><button onClick="load('bucket')"> 7-11 </button></li>
-                <li><button onClick="load('mattress')"> Budget </button></li>
+      </div>
+
+      <div class="col-lg-3">
+          <!--<button class="btn btn-primary dropdown-toggle col-lg-2" type="button"" style="width: 200%;">Hot<span class="caret"></span></button>-->
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="cell.php" style="font-family: Roboto; font-size: 125%">Hot</a></li>
+                <li><a onclick="load('Shirtless')">Shirtless</a></li>
+                <li><a onclick="load('Photoshoot')">Photoshoot</a></li>
             </ul>
-        </div>
+      </div>
      </div>
  </div>
 
@@ -145,7 +160,7 @@
           require_once('include/config.inc.php');
           require_once('include/connect.inc.php');
           $read=trim($read);
-          $query="select COUNT(*) from products where category=? and userId!=?";
+          $query="select COUNT(*) from products where category= ? and userId != ?";
           try{
           $query_prepare=$conn->prepare($query);
           $query_prepare->execute(array($read,$_SESSION['ID']));

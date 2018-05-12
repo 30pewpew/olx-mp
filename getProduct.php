@@ -24,7 +24,7 @@
 
          $total_pages = 1;
          $query = 'SELECT * FROM products WHERE category = ? and userId != ? limit '. $start .',3';
-         $query_prepare =$ conn -> prepare($query);
+         $query_prepare = $conn -> prepare($query);
          $query_prepare -> execute(array($product,$_SESSION['ID'])); // PDOStatement object
          $rows = $query_prepare -> fetchAll();
          $num_rows = count($rows);
@@ -40,7 +40,7 @@
         echo '<div class="row col-lg-5 col-md-5 col-sm-5 col-xs-5"><image src="uploads/'.$row['productId'].'.jpg" height="150" width="150" alt="image not found" style="border-radius:5%"></div>';
         echo '<div class="row col-lg-7 col-md-7 col-sm-7 col-xs-7"><p><b>Category: </b>'.$row['category'].'</p>';
         echo '<p><b>Description: </b>'.$row['description'].'</p>';
-        echo '<p><b>Base Price: </b>'.$row['minPrice'].'</p>';
+        echo '<p><b>Starting Price: </b>'.$row['minPrice']. ' PHP'.'</p>';
         echo '<p><b>Time Uploaded: </b>'.$row['uploadedTime'].'</p>';
 
         if($row1['COUNT(*)']==0)

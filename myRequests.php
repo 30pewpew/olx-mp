@@ -109,7 +109,7 @@ function updateRequest(serialNo,i)
 	 }
 	 else{
     	echo '<p>This Item is Requested by <b>'.$row2['COUNT(*)'].' other people </b></p>';
-		echo '<p><b>Maximum Bid Price</b> till now is Rs <b>'.$row2['max(bidPrice)'].'</b></p>';  
+		echo '<p><b>Maximum Bid Price</b> till now is <b>'.$row2['max(bidPrice)']. ' PHP' .'</b></p>';  
 	 }
 	 $query='select users.username,users.name,users.phoneno,products.userId from products,users where products.productId = ? and users.Id=products.userId limit 1';
      $query_prepare=$conn->prepare($query);

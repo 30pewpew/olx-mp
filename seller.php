@@ -178,7 +178,7 @@ function deleteProduct(productId,i)
 	showheader("Sell A Product");
 	shownavigation($_SESSION['username']);
 ?>
-<div class="container-fluid" style="background-color: cyan; height: 77%;">
+<div class="container-fluid" style="background-color: cyan; height: 77.2%;">
     
     <div class="row well col-lg-4 col-md-4 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-4 col-sm-offset-4 " style="background-color: #d3d3d3; margin-top: 2%; margin-left: 23%; padding: 2%; width: 55%; height: 90%; " >
       <h2 style="text-align:center">Product Information</h2>
@@ -187,7 +187,7 @@ function deleteProduct(productId,i)
             <br>
             <div class="form-group">
                 <label for="uploaded_image">Upload Product Image</label>
-                <input type="file" name="uploaded_image"><p class="help-block" required>
+                <input type="file" name="uploaded_image"><p class="help-block" required>* Image should be in jpeg or jpg format and size should be less than 3713052 Bytes</p>
             </div>
 
             <br>
@@ -245,7 +245,7 @@ function deleteProduct(productId,i)
                         	<div class="row col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <p><?php echo '<b>Category: </b>'.$row['category'];?></p>
                                 <p><?php echo '<b>Description: </b>'.$row['description'];?></p>
-                                <p><?php echo '<b>Base price: </b>Rs '.$row['minPrice'].'</p><p><b>Upload Time: </b>'.$row['uploadedTime'];?></p>
+                                <p><?php echo '<b>Base price: </b>'.$row['minPrice']. ' PHP'.'</p><p><b>Upload Time: </b>'.$row['uploadedTime'];?></p>
                                 <button id="requests<?php echo $i;?>" class="btn btn-primary" onClick="showRequests(<?php echo $row['productId'];?>,<?php echo $i;?>);">See Requests</button>
                                 <button id="delete<?php echo $i;?>" class="btn btn-danger" onClick="deleteProduct(<?php echo $row['productId'];?>,<?php echo $i;?>);">Delete This Product</button>
                             </div>
