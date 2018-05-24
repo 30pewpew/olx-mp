@@ -156,6 +156,12 @@
                         <label for="phoneno">Phone number: </label>
                         <input type="text" name="new_userphoneno" class="form-control" value="" maxlength="10" placeholder="+63 " required>
                     </div>
+
+                    <div class="form-group">
+                        <span class="glyphicon glyphicon-home"></span>
+                        <label for="address">Address: </label>
+                        <input type="text" name="new_useraddress" class="form-control" value="" maxlength="10" placeholder="Enter your own address " required>
+                    </div>
                     
                     <div class="form-group">
                         <span class="glyphicon glyphicon-envelope"></span>
