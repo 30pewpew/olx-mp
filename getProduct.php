@@ -36,12 +36,14 @@
         $query_prepare1 = $conn -> prepare($query1);
         $query_prepare1 -> execute(array($row['productId'],$_SESSION['ID'])); // PDOStatement object
         $row1 = $query_prepare1 -> fetch();
-        echo '<div id="'. $i .'" class="container-fluid well">';
-        echo '<div class="row col-lg-5 col-md-5 col-sm-5 col-xs-5"><image src="uploads/'.$row['productId'].'.jpg" height="150" width="150" alt="image not found" style="border-radius:5%"></div>';
+        echo '<div id="'. $i .'" class="container-fluid well" style="width: 203%">';
+        // style="margin-right: -103%"
+        echo '<div class="row col-lg-5 col-md-5 col-sm-5 col-xs-5"><image src="uploads/'.$row['productId'].'.jpg" height="250" width="250" alt="image not found" style="border-radius:5%"></div>';
         echo '<div class="row col-lg-7 col-md-7 col-sm-7 col-xs-7"><p><b>Category: </b>'.$row['category'].'</p>';
         echo '<p><b>Description: </b>'.$row['description'].'</p>';
         echo '<p><b>Starting Price: </b>'.$row['minPrice']. ' PHP'.'</p>';
         echo '<p><b>Time Uploaded: </b>'.$row['uploadedTime'].'</p>';
+        echo '<p><b>Auction Time Left: 24 Hours, 30 Minutes, 10 Seconds </b>'. '</p>';
 
         if($row1['COUNT(*)']==0)
         {
