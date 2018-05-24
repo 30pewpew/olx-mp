@@ -175,17 +175,19 @@
        fclose($fp);
        arsort($a);
 	   $i=1;
+       
        foreach($a as $key=>$value)
        {
           if($value==0)
           	continue;
-          echo '<button class="btn btn-sm btn-primary" onClick="load(\''.$key.'\');">'.$key.'</button>';
+          echo '<button class="btn btn-sm btn-primary" hidden onClick="load(\''.$key.'\');">'.$key.'</button>';
           echo '<b>'.$value.' uploads</b><br>';
-		  if($i==10){
-		  	 break;
-		  }
-		  $i++;
+		      if($i==10){
+		  	   break;
+		      }
+		    $i++;
        }
+
     ?>
     </div>
     <div class="container-fluid col-lg-6 col-md-6 col-sm-6 col-xs-6" id="center" >

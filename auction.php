@@ -175,14 +175,14 @@ function deleteProduct(productId,i)
   // Dependencies
   require_once('commonbar.php');
 	require_once('navigation.php');
-	showheader("Sell A Product");
+	showheader("Auction A Product");
 	shownavigation($_SESSION['username']);
 ?>
 <div class="container-fluid" style="background-color: cyan; height: 77.2%;">
     
     <div class="row well col-lg-4 col-md-4 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-4 col-sm-offset-4 " style="background-color: #d3d3d3; margin-top: 2%; margin-left: 23%; padding: 2%; width: 55%; height: 90%; " >
-      <h2 style="text-align:center">Product Information</h2>
-        <form action="seller.php" method="post" enctype="multipart/form-data">
+      <h2 style="text-align:center">Auction Information</h2>
+        <form action="auction.php" method="post" enctype="multipart/form-data">
             <br>
             <br>
             <div class="form-group">

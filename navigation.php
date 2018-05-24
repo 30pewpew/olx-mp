@@ -52,9 +52,11 @@ function shownavigation(){
           <div class="col-lg-12">
             <ul class="nav nav-pills nav-justified">
                 <li><a href="cell.php" style="font-family: Roboto; font-size: 150%">Buy Products</a></li>
-                <li><a href="seller.php" style="font-family: Roboto; font-size: 150%">Sell/Previous Uploads</a></li>
+                <li><a href="auction.php" style="font-family: Roboto; font-size: 150%">Auction</a></li>
+                <li><a href="sell.php" style="font-family: Roboto; font-size: 150%">Sell</a></li>
                 <li><a href="myProfile.php" style="font-family: Roboto; font-size: 150%">Edit Profile</a></li>
-                <li><a href="myRequests.php" style="font-family: Roboto; font-size: 150%">My Requests</a></li>
+                <li><a href="myRequests.php" style="font-family: Roboto; font-size: 150%">Auction Requests</a></li>
+                <li><a href="cart.php" style="font-family: Roboto; font-size: 150%">My Cart</a></li>
                 <li><a href="logout.php" style="font-family: Roboto; font-size: 150%">Logout <b>[<?php echo $_SESSION['username']; ?>]</b></a></li>
                 <!--
                 <div class="col-lg-2 col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4">
