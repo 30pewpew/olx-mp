@@ -43,7 +43,7 @@
         echo '<p><b>Description: </b>'.$row['description'].'</p>';
         echo '<p><b>Starting Price: </b>'.$row['minPrice']. ' PHP'.'</p>';
         echo '<p><b>Time Uploaded: </b>'.$row['uploadedTime'].'</p>';
-        echo '<p><b>Auction Time Left: 24 Hours, 30 Minutes, 10 Seconds </b>'. '</p>';
+        echo '<p><b>Auction Time Left: </b>24 Hours, 0 Minutes, 0 Seconds'. '</p>';
 
         if($row1['COUNT(*)']==0)
         {
