@@ -1,14 +1,9 @@
 <?php
-  session_start();
-  if(!isset($_SESSION['ID']))
-  {
     // Dependencies
-    header("Location:index.php");
     require_once('commonbar.php');
-    require_once('navigation.php');
+    require_once('defaultnavigation.php');
     showheader("BUY");
     shownavigation();
-  }
 ?>
   <!-- Javascript Code -->
   <script type="text/javascript">

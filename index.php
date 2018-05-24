@@ -187,9 +187,19 @@
                     </div>          
                 </form>
             </div>
+
+            <!-- BROWSE ITEMS -->           
+            <div class="well col-lg-3 col-md-3 col-sm-3 col-xs-3 col-lg-offset-3 col-md-offset-3 col-xs-offset-3 col-sm-offset-3" style="margin-top: 1.75%; margin-left: 39%; padding: 35px">
+                <h3 style="underline">BROWSE ITEMS <span class="glyphicon glyphicon-usd"></span></h3>
+                <form action="Browse.php">
+                  <button input type="submit" class="btn btn-primary">Browse Shop</button>
+                </form>
+
+                <button input type="submit" class="btn btn-primary" onclick="location.href='/olx/browse.php'">Browse Shop</button>
+            </div>
             
             <!-- LOGIN -->           
-            <div class="well col-lg-3 col-md-3 col-sm-3 col-xs-3 col-lg-offset-3 col-md-offset-3 col-xs-offset-3 col-sm-offset-3" style="margin-top: 175px; margin-left: 39%; padding: 35px">
+            <div class="well col-lg-3 col-md-3 col-sm-3 col-xs-3 col-lg-offset-3 col-md-offset-3 col-xs-offset-3 col-sm-offset-3" style="margin-top: 5%; margin-left: 39%; padding: 35px">
                 <h3 style="underline">LOGIN <span class="glyphicon glyphicon-ok"></span></h3>
                 <form action="index.php" method="post">
                     <div class="form-group">

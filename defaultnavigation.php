@@ -54,11 +54,7 @@ function shownavigation(){
                 <li><a href="cell.php" style="font-family: Roboto; font-size: 150%">Buy Products</a></li>
                 <li><a href="auction.php" style="font-family: Roboto; font-size: 150%">Auction</a></li>
                 <li><a href="sell.php" style="font-family: Roboto; font-size: 150%">Sell</a></li>
-                <li><a href="myProfile.php" style="font-family: Roboto; font-size: 150%">Edit Profile</a></li>
-                <li><a href="auctionrequests.php" style="font-family: Roboto; font-size: 150%">Auction Requests</a></li>
-                <li><a href="salehistory.php" style="font-family: Roboto; font-size: 150%">Sales History</a></li>
-                <li><a href="purchasehistory.php" style="font-family: Roboto; font-size: 150%">Purchase History</a></li>
-                <li><a href="logout.php" style="font-family: Roboto; font-size: 150%">Logout <b>[<?php echo $_SESSION['username']; ?>]</b></a></li>
+                <li><a href="logout.php" style="font-family: Roboto; font-size: 150%">LOGIN</b></a></li>
                 <!--
                 <div class="col-lg-2 col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4">
                     <button class="btn btn-primary col-lg-6" onClick="getNotifications();" id="getNotifications" style="margin-left: 155%; position: absolute; margin-top: 0%; height: 41px">Notifications
