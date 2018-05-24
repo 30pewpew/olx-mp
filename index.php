@@ -160,7 +160,7 @@
                     <div class="form-group">
                         <span class="glyphicon glyphicon-home"></span>
                         <label for="address">Address: </label>
-                        <input type="text" name="new_useraddress" class="form-control" value="" maxlength="10" placeholder="Enter your own address " required>
+                        <input type="text" name="new_useraddress" class="form-control" value="" maxlength="10" placeholder="Enter address" required>
                     </div>
                     
                     <div class="form-group">
@@ -180,7 +180,11 @@
                         <label for="password">Confirm Password: </label>
                         <input type="password" name="new_confpassword" class="form-control" maxlength="41" placeholder="Enter password again" required>
                     </div>
-                    <button input type="submit" name="signin_submit" class="btn btn-lg btn-danger">Create Account</button>             
+
+                    <button input type="submit" name="signin_submit" class="btn btn-lg btn-danger">Create Account</button>
+                    <div class="checkbox">
+                      <label><input type="checkbox" value="">Receive email notifications</label>
+                    </div>          
                 </form>
             </div>
             
