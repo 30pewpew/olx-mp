@@ -192,7 +192,7 @@ function deleteProduct(productId,i)
 
             <br>
             <div class="form-group">
-                <label for="price">Minimum Price</label>
+                <label for="price">Minimum Bid Price</label>
                 <input type="number" name="price" class="form-control" placeholder="in Philippine Pesos" required>
             </div>
 

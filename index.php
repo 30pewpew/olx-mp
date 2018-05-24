@@ -165,7 +165,7 @@
                     
                     <div class="form-group">
                         <span class="glyphicon glyphicon-envelope"></span>
-                        <label for="EMAIL">Email: </label>
+                        <label for="emailAddress">Email: </label>
                         <input type="email" name="email" class="form-control" maxlength="41" placeholder="Enter valid email" required>
                     </div>
                     
