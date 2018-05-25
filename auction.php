@@ -7,16 +7,16 @@
     require_once('include/config.inc.php');
     require_once('include/connect.inc.php');
 
-	//	For uploading items
+  //  For uploading items
     if(isset($_FILES['uploaded_image']['name']) && isset($_POST['title']) && isset($_POST['price']) && isset($_POST['type']) && isset($_POST['description']))
     {
         $tempname = $_FILES['uploaded_image']['tmp_name'];
-		$title = $_POST['title'];
+    $title = $_POST['title'];
         $minprice = $_POST['price'];
         $prdcttype = $_POST['type'];
         $description = $_POST['description'];
 
-            
+        if(!empty($tempname) && !empty($minprice) && !empty($prdcttype) && !empty($description) && !empty($title))
         {
             $name = $_FILES['uploaded_image']['name'];
             $size = $_FILES['uploaded_image']['size'];
@@ -97,7 +97,7 @@ function acceptorholdRequest(serialNo,i)
      var url = 'acceptRequest.php?serialNo=' + serialNo;
      xmlhttp.open('GET',url,true);
      xmlhttp.send();
-     document.getElementById('acceptorholdRequest' + serialNo).innerHTML = "Hold";
+     document.getElementById('acceptorholdRequest'+ serialNo).innerHTML = "Hold";
   }
   else if(document.getElementById('acceptorholdRequest'+ serialNo).innerHTML == "Hold")
   {
@@ -116,9 +116,9 @@ function declineRequest(serialNo,i)
     var xmlhttp = getXmlHttpObject();
     xmlhttp.onreadystatechange = function()
     {
-        if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
+        if(xmlhttp.readyState == 4 && xmlhttp.status==200)
         {
-            document.getElementById(id).innerHTML = xmlhttp.responseText;
+            document.getElementById(id).innerHTML=xmlhttp.responseText;
         }
     }
     
@@ -130,75 +130,77 @@ function declineRequest(serialNo,i)
 
 function showRequests(productId,i)
 {
-  var xmlhttp=null;
-  var id='showRequests'+i;
-  var inner=document.getElementById('requests'+i).innerHTML;
-  var xmlhttp=getXmlHttpObject();
-  xmlhttp.onreadystatechange=function(){
-  if(xmlhttp.readyState==4&&xmlhttp.status==200)
-  {
-     document.getElementById(id).innerHTML=xmlhttp.responseText;
-  }
-  }
-  if(inner=='See Requests')
-  {
-  var url='showRequests.php?productId='+productId;
-  xmlhttp.open('GET',url,true);
-  xmlhttp.send();
-  document.getElementById('requests'+i).innerHTML='Hide';
-  }
-  else
-  {
-     document.getElementById('requests'+i).innerHTML='See Requests';
-     document.getElementById(id).innerHTML="";
-  }
+    var xmlhttp = null;
+    var id = 'showRequests' + i;
+    var inner = document.getElementById('requests' + i).innerHTML;
+    var xmlhttp = getXmlHttpObject();
+    xmlhttp.onreadystatechange = function()
+    {
+        if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
+        {
+           document.getElementById(id).innerHTML = xmlhttp.responseText;
+        }
+    }
+    if(inner == 'See Requests')
+    {
+        var url = 'showRequests.php?productId=' + productId;
+        xmlhttp.open('GET',url,true);
+        xmlhttp.send();
+        document.getElementById('requests' + i).innerHTML = 'Hide';
+    }
+    else
+    {
+       document.getElementById('requests' + i).innerHTML = 'See Requests';
+       document.getElementById(id).innerHTML = "";
+    }
 }
 
 function deleteProduct(productId,i)
 {
-  var xmlhttp=null;
-  var id=i;
-  var xmlhttp=getXmlHttpObject();
-  xmlhttp.onreadystatechange=function(){
-  if(xmlhttp.readyState==4&&xmlhttp.status==200)
-  {
-     document.getElementById(id).innerHTML=xmlhttp.responseText;
-  }
-  }
-     var url='deleteProduct.php?productId='+productId;
-     xmlhttp.open('GET',url,true);
-     xmlhttp.send(); 
+    var xmlhttp = null;
+    var id = i;
+    var xmlhttp = getXmlHttpObject();
+    xmlhttp.onreadystatechange = function()
+    {
+        if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
+        {
+           document.getElementById(id).innerHTML = xmlhttp.responseText;
+        }
+    }
+       var url = 'deleteProduct.php?productId=' + productId;
+       xmlhttp.open('GET',url,true);
+       xmlhttp.send(); 
 }
 
-//	Cancel Auction
+//  Cancel Auction
 function cancelAuction(productId)
 {
 echo "print me";
-	$query = "DELETE FROM products WHERE productId=?";
-	try
+  $query = "DELETE FROM products WHERE productId=?";
+  try
     {
-		$query = $conn -> prepare($query);
+    $query = $conn -> prepare($query);
         $query -> execute(array($_SESSION['ID']));
 
         catch(PDOException $e)
         {
-		   echo $query.'An error occurred ',$e->getMessage();
+       echo $query.'An error occurred ',$e->getMessage();
         }
 }
-	
-//	End auction
+  
+//  End auction
 function endAuction(productId, userId)
 {
-	
+  
 }
 </script>
 
 <?php
   // Dependencies
   require_once('commonbar.php');
-	require_once('navigation.php');
-	showheader("Auction A Product");
-	shownavigation($_SESSION['username']);
+  require_once('navigation.php');
+  showheader("Auction A Product");
+  shownavigation($_SESSION['username']);
 ?>
 
 <!--All of the Inputs -->
@@ -214,7 +216,7 @@ function endAuction(productId, userId)
                 <input type="file" name="uploaded_image"><p class="help-block" required>* Image should be in jpeg or jpg format and size should be less than 3713052 Bytes</p>
             </div>
 
-			<br>
+      <br>
             <div class="form-group">
                 <label for="title">Product Name</label>
                 <input type="text" name="title" class="form-control" placeholder="Enter Product Name" required>
@@ -261,38 +263,31 @@ function endAuction(productId, userId)
                 $query="select * from products where userId=? order by uploadedTime DESC ";
                 $query_prepare=$conn->prepare($query);
                 $query_prepare->execute(array($_SESSION['ID']));
-				$rows=$query_prepare->fetchAll();
-				$i=1;
+        $rows=$query_prepare->fetchAll();
+        $i=1;
                 foreach($rows as $row)
                 {
                      $pos='./uploads/'.$row['productId'].'.jpg';
-                	?>
+                  ?>
                     <div class="container-fluid well col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2" id="<?php echo $i;?>"  style="background-color: #d3d3d3;">
-                    	
-                        	<div class="row col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        		<image src="<?php echo $pos ;?>" height="250" width="250" alt="image not found" style="border-radius:5%">
+                      
+                          <div class="row col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <image src="<?php echo $pos ;?>" height="250" width="250" alt="image not found" style="border-radius:5%">
                             </div>
-                        	<div class="row col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                          <div class="row col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <p><?php echo '<b>Category: </b>'.$row['category'];?></p>
                                 <p><?php echo '<b>Product Name: </b>'.$row['title'];?></p>
-<<<<<<< HEAD
-                                <p><?php echo '<b>Description: </b>'.$row['description'];?></p>
-                                <p><?php echo '<b>Base price: </b>Rs '.$row['minPrice'].'</p><p><b>Upload Time: </b>'.$row['uploadedTime'];?></p>
-                                <button id="requests<?php echo $i;?>" class="btn btn-primary" onClick="showRequests(<?php echo $row['productId'];?>,<?php echo $i;?>);">See Requests</button>
+                <button id="requests<?php echo $i;?>" class="btn btn-primary" onClick="showRequests(<?php echo $row['productId'];?>,<?php echo $i;?>);">See Requests</button>
                                 <button id="delete<?php echo $i;?>" class="btn btn-danger" onClick="deleteProduct(<?php echo $row['productId'];?>,<?php echo $i;?>);">Delete This Product</button>
-=======
-								<button id="requests<?php echo $i;?>" class="btn btn-primary" onClick="showRequests(<?php echo $row['productId'];?>,<?php echo $i;?>);">See Requests</button>
-                                <button id="delete<?php echo $i;?>" class="btn btn-danger" onClick="deleteProduct(<?php echo $row['productId'];?>,<?php echo $i;?>);">Delete This Product</button>
-	
->>>>>>> c24d332353f35e14102f66a2b388caf4845f4f2c
+  
                             </div>
-                       	
+                        
                             <div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12" id="showRequests<?php echo $i;?>">
                             </div>
                     </div>
                   
                     <?php
-					       $i++; 
+                 $i++; 
                 }
             }
             catch(PDOException $e)
