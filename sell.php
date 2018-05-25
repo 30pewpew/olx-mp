@@ -138,7 +138,7 @@ function showRequests(productId,i)
      document.getElementById(id).innerHTML="";
   }
 }
-function deleteProduct(productId,i)
+function deleteItem(productID,i)
 {
   var xmlhttp=null;
   var id=i;
@@ -149,7 +149,7 @@ function deleteProduct(productId,i)
      document.getElementById(id).innerHTML=xmlhttp.responseText;
   }
   }
-     var url='deleteProduct.php?productId='+productId;
+     var url='deleteItem.php?productID='+productID;
      xmlhttp.open('GET',url,true);
      xmlhttp.send(); 
 }
@@ -232,7 +232,7 @@ function deleteProduct(productId,i)
                                 <p><?php echo '<b>Description: </b>'.$row['description'];?></p>
                                 <p><?php echo '<b>Base price: </b>'.$row['price'];?></p>
                                 <button id="requests<?php echo $i;?>" class="btn btn-primary" onClick="showRequests(<?php echo $row['productId'];?>,<?php echo $i;?>);">See Requests</button>
-                                <button id="delete<?php echo $i;?>" class="btn btn-danger" onClick="deleteProduct(<?php echo $row['productId'];?>,<?php echo $i;?>);">Delete This Product</button>
+                                <button id="delete<?php echo $i;?>" class="btn btn-danger" onClick="deleteItem(<?php echo $row['productID'];?>,<?php echo $i;?>);">Delete This Product</button>
                             </div>
                         
                             <div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12" id="showRequests<?php echo $i;?>">
