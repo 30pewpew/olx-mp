@@ -32,7 +32,7 @@
 
     foreach($rows as $row)
     {
-        $query1 = 'SELECT COUNT(*) FROM salerequests WHERE productID = ? and buyerID = ?';
+        $query1 = 'SELECT COUNT(*) FROM productssale WHERE productID = ? and category = ?';
         $query_prepare1 = $conn -> prepare($query1);
         $query_prepare1 -> execute(array($row['productID'],$_SESSION['ID'])); // PDOStatement object
         $row1 = $query_prepare1 -> fetch();
@@ -41,14 +41,12 @@
         echo '<div class="row col-lg-5 col-md-5 col-sm-5 col-xs-5"><image src="forsale/'.$row['productID'].'.jpg" height="250" width="250" alt="image not found" style="border-radius:5%"></div>';
         echo '<div class="row col-lg-7 col-md-7 col-sm-7 col-xs-7"><p><b>Category: </b>'.$row['category'].'</p>';
         echo '<p><b>Description: </b>'.$row['description'].'</p>';
-        echo '<p><b>Starting Price: </b>'.$row['minPrice']. ' PHP'.'</p>';
-        echo '<p><b>Time Uploaded: </b>'.$row['uploadedTime'].'</p>';
+        echo '<p><b>Price: </b>'.$row['price']. ' PHP'.'</p>';
 
         if($row1['COUNT(*)']==0)
         {
             echo '<div id="forBid'.$i.'" class="form-inline">';
-            echo '<input type="text" class="form-control" id="bidPrice'.$i.'" value="'.$row['minPrice'].'">';
-            echo '<button class="btn btn-md btn-primary" onClick="sendRequest('.$row['productID'].','.$i.')">Bid</button>';
+            echo '<button class="btn btn-md btn-primary" onClick="sendRequest('.$row['productID'].','.$i.')">Buy</button>';
             echo '</div>';
         }
 ?>
