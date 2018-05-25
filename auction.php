@@ -7,14 +7,16 @@
     require_once('include/config.inc.php');
     require_once('include/connect.inc.php');
 
-    if(isset($_FILES['uploaded_image']['name']) && isset($_POST['price']) && isset($_POST['type']) && isset($_POST['description']))
+	//	For uploading items
+    if(isset($_FILES['uploaded_image']['name']) && isset($_POST['title']) && isset($_POST['price']) && isset($_POST['type']) && isset($_POST['description']))
     {
         $tempname = $_FILES['uploaded_image']['tmp_name'];
+		$title = $_POST['title'];
         $minprice = $_POST['price'];
         $prdcttype = $_POST['type'];
         $description = $_POST['description'];
 
-        if(!empty($tempname) && !empty($minprice) && !empty($prdcttype) && !empty($description))
+        if(!empty($tempname) && !empty($minprice) && !empty($prdcttype) && !empty($description) && !empty($title))
         {
             $name = $_FILES['uploaded_image']['name'];
             $size = $_FILES['uploaded_image']['size'];
@@ -27,7 +29,7 @@
             {
                 if(move_uploaded_file($tempname,'uploads/'.$name))
                 {
-                    $query = "INSERT INTO products(userId,category,minPrice,description) value(?,?,?,?)";
+                    $query = "INSERT INTO products(userId,category,minPrice,description,title) value(?,?,?,?,?)";
                     try
                     {
                         $query_prepare = $conn -> prepare($query);
@@ -39,7 +41,7 @@
                         rename('uploads/'.$name,'uploads/'.$aa['productId'].'.jpg');
                     }
 
-                    catch(PDOException $es)
+                    catch(PDOException $e)
                     {
                         echo 'An error occurred ',$e->getMessage();
                     }
@@ -178,6 +180,7 @@ function deleteProduct(productId,i)
 	showheader("Auction A Product");
 	shownavigation($_SESSION['username']);
 ?>
+<!--All of the Inputs -->
 <div class="container-fluid" style="background-color: cyan; height: 77.2%;">
     
     <div class="row well col-lg-4 col-md-4 col-sm-4 col-xs-12 col-lg-offset-4 col-md-offset-4 col-sm-offset-4 " style="background-color: #d3d3d3; margin-top: 2%; margin-left: 23%; padding: 2%; width: 55%; height: 90%; " >
@@ -188,6 +191,12 @@ function deleteProduct(productId,i)
             <div class="form-group">
                 <label for="uploaded_image">Upload Product Image</label>
                 <input type="file" name="uploaded_image"><p class="help-block" required>* Image should be in jpeg or jpg format and size should be less than 3713052 Bytes</p>
+            </div>
+
+			<br>
+            <div class="form-group">
+                <label for="title">Product Name</label>
+                <input type="text" name="title" class="form-control" placeholder="Enter Product Name" required>
             </div>
 
             <br>
