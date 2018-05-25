@@ -57,7 +57,7 @@ function shownavigation(){
                 <li><a href="sell.php" style="font-family: Roboto; font-size: 150%">Sell</a></li>
                 <li><a href="myProfile.php" style="font-family: Roboto; font-size: 150%">Edit Profile</a></li>
                 <li><a href="auctionrequests.php" style="font-family: Roboto; font-size: 150%">Auction Requests</a></li>
-                <li><a href="salehistory.php" style="font-family: Roboto; font-size: 150%">Sales History</a></li>
+                <li><a href="saleshistory.php" style="font-family: Roboto; font-size: 150%">Sales History</a></li>
                 <li><a href="purchasehistory.php" style="font-family: Roboto; font-size: 150%">Purchase History</a></li>
                 <li><a href="logout.php" style="font-family: Roboto; font-size: 150%">Logout <b>[<?php echo $_SESSION['username']; ?>]</b></a></li>
                 <!--
