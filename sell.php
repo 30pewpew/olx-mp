@@ -34,7 +34,7 @@ if(isset($_FILES['uploaded_image']['name'])&& isset($_POST['price'])&&isset($_PO
             $aa=$query_prepare2->fetch();
             rename('forsale/'.$name,'forsale/'.$aa['productID'].'.jpg');
             }
-            catch(PDOException $es)
+            catch(PDOException $e)
             {
              echo 'some error occur ',$e->getMessage();
             }
@@ -220,7 +220,7 @@ function deleteProduct(productId,i)
         $i=1;
                 foreach($rows as $row)
                 {
-                     $pos='./uploads/'.$row['productId'].'.jpg';
+                     $pos='./forsale/'.$row['productID'].'.jpg';
                   ?>
                     <div class="container-fluid well col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2" id="<?php echo $i;?>"  style="background-color: #d3d3d3;">
                       
