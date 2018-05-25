@@ -66,6 +66,7 @@ function getXmlHttpObject()
      {
        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
      }
+     
   }
   return xmlhttp;
 }
