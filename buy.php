@@ -64,7 +64,7 @@
   {
     var xmlhttp=null;
     var id="showStatus"+i;
-    var bidPrice=document.getElementById('bidPrice'+i).value;
+    var price=document.getElementById('price'+i).value;
     var xmlhttp=getXmlHttpObject();
     xmlhttp.onreadystatechange=function()
     {
@@ -73,7 +73,7 @@
          document.getElementById(id).innerHTML=xmlhttp.responseText;
       }
     }
-    var url = 'sendRequest.php?productId=' + productId + '&bidPrice=' + bidPrice;
+    var url = 'itemRequest.php?productId=' + productId + '&price=' + price;
     xmlhttp.open('GET',url,true);
     xmlhttp.send();
     document.getElementById('forBid' + i).innerHTML = "";
@@ -92,7 +92,7 @@
          document.getElementById(id).innerHTML = xmlhttp.responseText;
       }
     }
-    var url = 'othersStatus.php?productId=' + productId;
+    var url = 'itemStatus.php?productId=' + productId;
     xmlhttp.open('GET',url,true);
     xmlhttp.send();
     }
