@@ -16,7 +16,7 @@
         $prdcttype = $_POST['type'];
         $description = $_POST['description'];
 
-        if(!empty($tempname) && !empty($minprice) && !empty($prdcttype) && !empty($description) && !empty($title))
+            
         {
             $name = $_FILES['uploaded_image']['name'];
             $size = $_FILES['uploaded_image']['size'];
@@ -97,7 +97,7 @@ function acceptorholdRequest(serialNo,i)
      var url = 'acceptRequest.php?serialNo=' + serialNo;
      xmlhttp.open('GET',url,true);
      xmlhttp.send();
-     document.getElementById('acceptorholdRequest'+ serialNo).innerHTML = "Hold";
+     document.getElementById('acceptorholdRequest' + serialNo).innerHTML = "Hold";
   }
   else if(document.getElementById('acceptorholdRequest'+ serialNo).innerHTML == "Hold")
   {
@@ -116,9 +116,9 @@ function declineRequest(serialNo,i)
     var xmlhttp = getXmlHttpObject();
     xmlhttp.onreadystatechange = function()
     {
-        if(xmlhttp.readyState == 4 && xmlhttp.status==200)
+        if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
         {
-            document.getElementById(id).innerHTML=xmlhttp.responseText;
+            document.getElementById(id).innerHTML = xmlhttp.responseText;
         }
     }
     
@@ -130,51 +130,50 @@ function declineRequest(serialNo,i)
 
 function showRequests(productId,i)
 {
-    var xmlhttp = null;
-    var id = 'showRequests' + i;
-    var inner = document.getElementById('requests' + i).innerHTML;
-    var xmlhttp = getXmlHttpObject();
-    xmlhttp.onreadystatechange = function()
-    {
-        if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
-        {
-           document.getElementById(id).innerHTML = xmlhttp.responseText;
-        }
-    }
-    if(inner == 'See Requests')
-    {
-        var url = 'showRequests.php?productId=' + productId;
-        xmlhttp.open('GET',url,true);
-        xmlhttp.send();
-        document.getElementById('requests' + i).innerHTML = 'Hide';
-    }
-    else
-    {
-       document.getElementById('requests' + i).innerHTML = 'See Requests';
-       document.getElementById(id).innerHTML = "";
-    }
+  var xmlhttp=null;
+  var id='showRequests'+i;
+  var inner=document.getElementById('requests'+i).innerHTML;
+  var xmlhttp=getXmlHttpObject();
+  xmlhttp.onreadystatechange=function(){
+  if(xmlhttp.readyState==4&&xmlhttp.status==200)
+  {
+     document.getElementById(id).innerHTML=xmlhttp.responseText;
+  }
+  }
+  if(inner=='See Requests')
+  {
+  var url='showRequests.php?productId='+productId;
+  xmlhttp.open('GET',url,true);
+  xmlhttp.send();
+  document.getElementById('requests'+i).innerHTML='Hide';
+  }
+  else
+  {
+     document.getElementById('requests'+i).innerHTML='See Requests';
+     document.getElementById(id).innerHTML="";
+  }
 }
 
 function deleteProduct(productId,i)
 {
-    var xmlhttp = null;
-    var id = i;
-    var xmlhttp = getXmlHttpObject();
-    xmlhttp.onreadystatechange = function()
-    {
-        if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
-        {
-           document.getElementById(id).innerHTML = xmlhttp.responseText;
-        }
-    }
-       var url = 'deleteProduct.php?productId=' + productId;
-       xmlhttp.open('GET',url,true);
-       xmlhttp.send(); 
+  var xmlhttp=null;
+  var id=i;
+  var xmlhttp=getXmlHttpObject();
+  xmlhttp.onreadystatechange=function(){
+  if(xmlhttp.readyState==4&&xmlhttp.status==200)
+  {
+     document.getElementById(id).innerHTML=xmlhttp.responseText;
+  }
+  }
+     var url='deleteProduct.php?productId='+productId;
+     xmlhttp.open('GET',url,true);
+     xmlhttp.send(); 
 }
 
 //	Cancel Auction
 function cancelAuction(productId)
 {
+echo "print me";
 	$query = "DELETE FROM products WHERE productId=?";
 	try
     {
@@ -200,9 +199,8 @@ function endAuction(productId, userId)
 	require_once('navigation.php');
 	showheader("Auction A Product");
 	shownavigation($_SESSION['username']);
-
-	
 ?>
+
 <!--All of the Inputs -->
 <div class="container-fluid" style="background-color: cyan; height: 77.2%;">
     
@@ -256,7 +254,6 @@ function endAuction(productId, userId)
     </div>
 </div>
 
-<!--Your Items-->
     <div class="container-fluid" style="background-color: #ffa500;" >
         <h2 style="text-align:center">Your Items for Auction</h2>
         <?php
@@ -278,9 +275,16 @@ function endAuction(productId, userId)
                         	<div class="row col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <p><?php echo '<b>Category: </b>'.$row['category'];?></p>
                                 <p><?php echo '<b>Product Name: </b>'.$row['title'];?></p>
+<<<<<<< HEAD
+                                <p><?php echo '<b>Description: </b>'.$row['description'];?></p>
+                                <p><?php echo '<b>Base price: </b>Rs '.$row['minPrice'].'</p><p><b>Upload Time: </b>'.$row['uploadedTime'];?></p>
                                 <button id="requests<?php echo $i;?>" class="btn btn-primary" onClick="showRequests(<?php echo $row['productId'];?>,<?php echo $i;?>);">See Requests</button>
-                                <!--button id="cancel<?php echo $i;?>" class="btn btn-danger" onClick="deleteProduct(<?php echo $row['productId'];?>,<?php echo $i;?>);">Cancel This Auction</button-->
-								<button id="cancel" class="btn btn-danger" onClick="cancelAuction(<?php echo $row['productId'];?>)">Cancel This Auction</button>
+                                <button id="delete<?php echo $i;?>" class="btn btn-danger" onClick="deleteProduct(<?php echo $row['productId'];?>,<?php echo $i;?>);">Delete This Product</button>
+=======
+								<button id="requests<?php echo $i;?>" class="btn btn-primary" onClick="showRequests(<?php echo $row['productId'];?>,<?php echo $i;?>);">See Requests</button>
+                                <button id="delete<?php echo $i;?>" class="btn btn-danger" onClick="deleteProduct(<?php echo $row['productId'];?>,<?php echo $i;?>);">Delete This Product</button>
+	
+>>>>>>> c24d332353f35e14102f66a2b388caf4845f4f2c
                             </div>
                        	
                             <div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12" id="showRequests<?php echo $i;?>">
