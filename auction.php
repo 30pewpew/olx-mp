@@ -255,4 +255,4 @@ function deleteProduct(productId,i)
     
 </body>
 </html>
-</html>
+</html>		

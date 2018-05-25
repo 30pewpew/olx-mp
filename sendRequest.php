@@ -18,6 +18,7 @@ if(isset($_GET['productId'])&&isset($_SESSION['ID'])&&!empty($_GET['productId'])
        $query="insert into requests(productId,buyerId,bidPrice,accepted) values(?,?,?,'h')";
        $query_prepare=$conn->prepare($query);
        $query_prepare->execute(array($productId,$buyerId,$bidPrice));
+	   $query2="INSERT INTO saleshistory(price, productId,userID,buyer,title) values(?,?,?,?,?)";
        echo '<b>bidding done</b>';
    }
    else
