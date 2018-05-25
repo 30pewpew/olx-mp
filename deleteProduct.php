@@ -19,7 +19,7 @@ if(isset($_GET['productId'])&&!empty($_GET['productId']))
 }
 }
 else
-die('WTF');
+die('Error deleting auction product');
 
 
 

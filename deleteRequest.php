@@ -19,5 +19,5 @@ if(isset($_GET['serialNo'])&&!empty($_GET['serialNo']))
 }
 }
 else
-die('');
+die('Error cancelling auction bid');
 ?>
