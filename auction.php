@@ -33,7 +33,7 @@
                     try
                     {
                         $query_prepare = $conn -> prepare($query);
-                        $query_prepare -> execute(array($_SESSION['ID'],$prdcttype,$minprice,$description));
+                        $query_prepare -> execute(array($_SESSION['ID'],$prdcttype,$minprice,$description,$title));
                         $query2 = "SELECT productId FROM products WHERE userId=? ORDER BY uploadedTime DESC limit 1 ";
                         $query_prepare2 = $conn -> prepare($query2);
                         $query_prepare2 -> execute(array($_SESSION['ID']));
@@ -43,7 +43,7 @@
 
                     catch(PDOException $e)
                     {
-                        echo 'An error occurred ',$e->getMessage();
+                        echo $query.'An error occurred ',$e->getMessage();
                     }
                 }
 
@@ -171,6 +171,27 @@ function deleteProduct(productId,i)
        xmlhttp.open('GET',url,true);
        xmlhttp.send(); 
 }
+
+//	Cancel Auction
+function cancelAuction(productId)
+{
+	$query = "DELETE FROM products WHERE productId=?";
+	try
+    {
+		$query = $conn -> prepare($query);
+        $query -> execute(array($_SESSION['ID']));
+
+        catch(PDOException $e)
+        {
+		   echo $query.'An error occurred ',$e->getMessage();
+        }
+}
+	
+//	End auction
+function endAuction(productId, userId)
+{
+	
+}
 </script>
 
 <?php
@@ -179,6 +200,8 @@ function deleteProduct(productId,i)
 	require_once('navigation.php');
 	showheader("Auction A Product");
 	shownavigation($_SESSION['username']);
+
+	
 ?>
 <!--All of the Inputs -->
 <div class="container-fluid" style="background-color: cyan; height: 77.2%;">
@@ -233,6 +256,7 @@ function deleteProduct(productId,i)
     </div>
 </div>
 
+<!--Your Items-->
     <div class="container-fluid" style="background-color: #ffa500;" >
         <h2 style="text-align:center">Your Items for Auction</h2>
         <?php
@@ -253,10 +277,10 @@ function deleteProduct(productId,i)
                             </div>
                         	<div class="row col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <p><?php echo '<b>Category: </b>'.$row['category'];?></p>
-                                <p><?php echo '<b>Description: </b>'.$row['description'];?></p>
-                                <p><?php echo '<b>Base price: </b>'.$row['minPrice']. ' PHP'.'</p><p><b>Upload Time: </b>'.$row['uploadedTime'];?></p>
+                                <p><?php echo '<b>Product Name: </b>'.$row['title'];?></p>
                                 <button id="requests<?php echo $i;?>" class="btn btn-primary" onClick="showRequests(<?php echo $row['productId'];?>,<?php echo $i;?>);">See Requests</button>
-                                <button id="delete<?php echo $i;?>" class="btn btn-danger" onClick="deleteProduct(<?php echo $row['productId'];?>,<?php echo $i;?>);">Delete This Product</button>
+                                <!--button id="cancel<?php echo $i;?>" class="btn btn-danger" onClick="deleteProduct(<?php echo $row['productId'];?>,<?php echo $i;?>);">Cancel This Auction</button-->
+								<button id="cancel" class="btn btn-danger" onClick="cancelAuction(<?php echo $row['productId'];?>)">Cancel This Auction</button>
                             </div>
                        	
                             <div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12" id="showRequests<?php echo $i;?>">
