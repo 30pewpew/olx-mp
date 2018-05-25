@@ -178,8 +178,8 @@ function deleteProduct(productId,i)
                 <input type="number" name="price" class="form-control" placeholder="in Philippine Pesos" required>
             </div>
       <div class="form-group">
-                <label for="name">Product Name</label>
-                <input type="text" name="name" class="form-control" placeholder="Product Name" required></textarea>
+                <label for="title">Product Name</label>
+                <input type="text" name="title" class="form-control" placeholder="Product Name" required></textarea>
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
@@ -210,7 +210,7 @@ function deleteProduct(productId,i)
 </div>
 
     <div class="container-fluid" style="background-color: #ffa500;" >
-        <h2 style="text-align:center">Previous Uploads</h2>
+        <h2 style="text-align:center">Your Items for Sale</h2>
         <?php
             try{
                 $query="select * from productssale where userId=?";
