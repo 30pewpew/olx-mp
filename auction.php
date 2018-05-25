@@ -33,7 +33,7 @@ if(isset($_FILES['uploaded_image']['name'])&& isset($_POST['title']) && isset($_
             $aa=$query_prepare2->fetch();
             rename('uploads/'.$name,'uploads/'.$aa['productId'].'.jpg');
             }
-            catch(PDOException $es)
+            catch(PDOException $e)
             {
              echo 'An error occurred ',$e->getMessage();
             }
