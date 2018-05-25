@@ -225,7 +225,7 @@ function deleteProduct(productId,i)
 </div>
 
     <div class="container-fluid" style="background-color: #ffa500;" >
-        <h2 style="text-align:center">Previous Uploads</h2>
+        <h2 style="text-align:center">Your Items for Auction</h2>
         <?php
             try{
                 $query="select * from products where userId=? order by uploadedTime DESC ";
