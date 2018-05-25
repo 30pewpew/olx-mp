@@ -2,9 +2,9 @@
   session_start();
   if(!isset($_SESSION['ID']))
   // Dependencies
-  header("Location:index.php");
+  //header("Location:index.php");
   require_once('commonbar.php');
-  require_once('navigation.php');
+  require_once('defaultnavigation.php');
   showheader("BUY");
   shownavigation();
 ?>
@@ -116,7 +116,7 @@
       <div class="col-lg-3">
           <!--<button class="btn btn-primary dropdown-toggle col-lg-2" type="button"" style="width: 200%;">Hot<span class="caret"></span></button>-->
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="cell.php" style="font-family: Roboto; font-size: 125%">Plain</a></li>
+                <li class="active"><a href="guestcell.php" style="font-family: Roboto; font-size: 125%">Plain</a></li>
                 <li><a onclick="load('Sleeping')">Sleeping</a></li>
                 <li><a onclick="load('Group')">Group</a></li>
             </ul>
@@ -125,7 +125,7 @@
       <div class="col-lg-3">
           <!--<button class="btn btn-primary dropdown-toggle col-lg-2" type="button"" style="width: 200%;">Hot<span class="caret"></span></button>-->
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="cell.php" style="font-family: Roboto; font-size: 125%">Pogi</a></li>
+                <li class="active"><a href="guestcell.php" style="font-family: Roboto; font-size: 125%">Pogi</a></li>
                 <li><a onclick="load('Flex')">Flex</a></li>
                 <li><a onclick="load('Gym')">Solo</a></li>
             </ul>
@@ -134,7 +134,7 @@
       <div class="col-lg-3">
           <!--<button class="btn btn-primary dropdown-toggle col-lg-2" type="button"" style="width: 200%;">Hot<span class="caret"></span></button>-->
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="cell.php" style="font-family: Roboto; font-size: 125%">Normal</a></li>
+                <li class="active"><a href="guestcell.php" style="font-family: Roboto; font-size: 125%">Normal</a></li>
                 <li><a onclick="load('Selfies')">Selfies</a></li>
                 <li><a onclick="load('Pair')">Pair</a></li>
             </ul>
@@ -143,7 +143,7 @@
       <div class="col-lg-3">
           <!--<button class="btn btn-primary dropdown-toggle col-lg-2" type="button"" style="width: 200%;">Hot<span class="caret"></span></button>-->
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="cell.php" style="font-family: Roboto; font-size: 125%">Hot</a></li>
+                <li class="active"><a href="guestcell.php" style="font-family: Roboto; font-size: 125%">Hot</a></li>
                 <li><a onclick="load('Shirtless')">Shirtless</a></li>
                 <li><a onclick="load('Photoshoot')">Photoshoot</a></li>
             </ul>
@@ -161,10 +161,9 @@
           require_once('include/connect.inc.php');
           $read=trim($read);
           $query="select COUNT(*) from products where category= ? and userId != ?";
-          try
-          {
+          try{
           $query_prepare=$conn->prepare($query);
-          $query_prepare->execute(array($read));
+          $query_prepare->execute(array($read,$_SESSION['ID']));
           $row=$query_prepare->fetch();
           $a[$read]=$row['COUNT(*)'];
           }
