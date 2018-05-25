@@ -51,10 +51,9 @@ function shownavigation(){
         <div class="container-fluid" style="background-color: #c0ded9">
           <div class="col-lg-12">
             <ul class="nav nav-pills nav-justified">
-                <li><a href="cell.php" style="font-family: Roboto; font-size: 150%">Buy Products</a></li>
-                <li><a href="auction.php" style="font-family: Roboto; font-size: 150%">Auction</a></li>
-                <li><a href="sell.php" style="font-family: Roboto; font-size: 150%">Sell</a></li>
-                <li><a href="logout.php" style="font-family: Roboto; font-size: 150%">LOGIN</b></a></li>
+                <li><a href="cell.php" style="font-family: Roboto; font-size: 150%">Bid</a></li>
+                <li><a href="buy.php" style="font-family: Roboto; font-size: 150%">Buy</a></li>
+                <li><a href="index.php" style="font-family: Roboto; font-size: 150%">Login</b></a></li>
                 <!--
                 <div class="col-lg-2 col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4">
                     <button class="btn btn-primary col-lg-6" onClick="getNotifications();" id="getNotifications" style="margin-left: 155%; position: absolute; margin-top: 0%; height: 41px">Notifications
