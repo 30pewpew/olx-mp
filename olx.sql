@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2018 at 04:57 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 5.6.35
+-- Generation Time: May 25, 2018 at 06:58 PM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -50,8 +50,6 @@ INSERT INTO `products` (`userId`, `productId`, `category`, `minPrice`, `uploaded
 (15, 50, 'Solo', 499, '2018-05-08 08:59:54', 'Bahay ni carlos', ''),
 (15, 51, 'Pair', 499, '2018-05-08 09:02:02', 'Mister Miss CAMP', ''),
 (15, 52, 'Selfies', 499, '2018-05-09 07:54:14', 'Bianca Abella', ''),
-(13, 53, 'Solo', 699, '2018-05-12 00:44:50', 'Inom sa bahay ni Carlos', ''),
-(13, 54, 'Selfies', 799, '2018-05-12 00:46:08', 'Rob Manila', ''),
 (18, 55, 'Solo', 230, '2018-05-24 14:53:23', 'not Esy', ''),
 (18, 71, 'Photoshoot', 50, '2018-05-25 13:09:58', 'tunay palaban ', 'Krystel Salazar'),
 (18, 72, 'Photoshoot', 50, '2018-05-25 13:11:29', 'tunay palaban ', 'Krystel Salazar');
@@ -149,7 +147,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `name`, `lastLogout`, `joinDate`, `gender`, `favoriteItems`, `emailAddress`, `otherInterests`, `phoneno`, `address`) VALUES
-(13, 'ethan', '*A16523BB4AC43F4136918211EB918D4B8B483A97', 'ETHAN MATTHEW CHENG SY', '2018-05-12 00:54:31', '2018-05-08 08:29:39', NULL, NULL, 'ethan@gmail.com', NULL, '9951968141', ''),
+(13, 'ethan', '*A16523BB4AC43F4136918211EB918D4B8B483A97', 'ETHAN MATTHEW CHENG SY', '2018-05-25 15:21:41', '2018-05-08 08:29:39', NULL, NULL, 'ethan@gmail.com', NULL, '9951968141', ''),
 (14, 'seller1', '*47586D303F33E9D4D748F66BDC3DAF9293CAD005', 'SELLER ONE', '2018-05-12 00:52:07', '2018-05-08 08:37:45', NULL, NULL, 'seller1@gmail.com', NULL, '9978672354', ''),
 (15, 'seller2', '*5C349A5FD48D0538F4835385304739DDD528C0B1', 'SELLER TWO', '2018-05-12 00:55:13', '2018-05-08 08:38:12', NULL, NULL, 'seller2@gmail.com', NULL, '9982769809', ''),
 (16, 'seller3', '*94DB8B50ACFD2D949B0671D56E1726360BFAFE98', 'SELLER THREE', '2018-05-12 00:57:11', '2018-05-08 08:38:34', NULL, NULL, 'seller3@gmail.com', NULL, '9981732716', ''),
@@ -193,7 +191,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `productId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `productId` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `productssale`
