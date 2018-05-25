@@ -1,5 +1,5 @@
 <?php
-if(@$_SERVER['HTTP_REFERER']==='http://localhost/olx-mp/auction.php')
+if(@$_SERVER['HTTP_REFERER']==='http://localhost/olx/auction.php')
 {
 if(isset($_GET['productId'])&&!empty($_GET['productId']))
 {
