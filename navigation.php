@@ -51,7 +51,7 @@ function shownavigation(){
         <div class="container-fluid" style="background-color: #c0ded9">
           <div class="col-lg-12">
             <ul class="nav nav-pills nav-justified">
-                <li><a href="cell.php" style="font-family: Roboto; font-size: 150%">Buy Products</a></li>
+                <li><a href="cell.php" style="font-family: Roboto; font-size: 150%">Bid Products</a></li>
                 <li><a href="auction.php" style="font-family: Roboto; font-size: 150%">Auction</a></li>
                 <li><a href="sell.php" style="font-family: Roboto; font-size: 150%">Sell</a></li>
                 <li><a href="myProfile.php" style="font-family: Roboto; font-size: 150%">Edit Profile</a></li>
