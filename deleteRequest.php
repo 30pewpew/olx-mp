@@ -10,6 +10,7 @@ if(isset($_GET['serialNo'])&&!empty($_GET['serialNo']))
    try{
    $query_prepare=$conn->prepare($query);
    $query_prepare->execute(array($serialNo));
+   echo 'Auction bid cancelled';
    }
    catch(PDOException $e)
             {
@@ -18,5 +19,5 @@ if(isset($_GET['serialNo'])&&!empty($_GET['serialNo']))
 }
 }
 else
-die('chalaki');
+die('');
 ?>
