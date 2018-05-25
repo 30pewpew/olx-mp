@@ -28,20 +28,20 @@ if(isset($_FILES['uploaded_image']['name'])&& isset($_POST['price'])&&isset($_PO
             try{
             $query_prepare=$conn->prepare($query);
             $query_prepare->execute(array($_SESSION['ID'],$description,$minprice,$title,$stock,$prdcttype));
-            $query2="select productID from productssale where userId=?";
+            $query2="select productID from productssale where userId=? order by ProductID";
             $query_prepare2=$conn->prepare($query2);
             $query_prepare2->execute(array($_SESSION['ID']));
             $aa=$query_prepare2->fetch();
             rename('forsale/'.$name,'forsale/'.$aa['productID'].'.jpg');
             }
-            catch(PDOException $es)
+            catch(PDOException $e)
             {
              echo 'some error occur ',$e->getMessage();
             }
           // PDOStatement object
     }
     else
-    echo 'no file uploaded';
+    echo 'No File Was Uploaded';
         }
         else 
           echo '<b>*image should be in jpeg or jpg format and size should be less than 3713052 Bytes</b>';
