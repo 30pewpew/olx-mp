@@ -23,7 +23,7 @@
          document.getElementById("center").innerHTML = xmlhttp.responseText;
       }
     }
-    var url = 'getProduct.php?pname=' + category + '&start=' + start;
+    var url = 'getItem.php?pname=' + category + '&start=' + start;
     xmlhttp.open('GET',url,true);
     xmlhttp.send();
   }
@@ -39,7 +39,7 @@
          document.getElementById("center").innerHTML = xmlhttp.responseText;
       }
     }
-    var url = 'getProduct.php?pname=' + category + '&start=' + start;
+    var url = 'getItem.php?pname=' + category + '&start=' + start;
     xmlhttp.open('GET',url,true);
     xmlhttp.send();
   }
@@ -55,7 +55,7 @@
          document.getElementById("center").innerHTML=xmlhttp.responseText;
       }
     }
-    var url='getProduct.php?pname='+category+'&start='+start;
+    var url='getItem.php?pname='+category+'&start='+start;
     xmlhttp.open('GET',url,true);
     xmlhttp.send();
   }
