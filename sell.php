@@ -22,7 +22,7 @@ if(isset($_FILES['uploaded_image']['name'])&& isset($_POST['price'])&&isset($_PO
     $extension=strtolower(substr($name,strpos($name,'.')+1));
     if(($extension=='jpg'||$extension=='jpeg')&&$type=='image/jpeg'&&$size<=$maxsize)
     {
-    if(move_uploaded_file($tempname,'uploads/'.$name))
+    if(move_uploaded_file($tempname,'forsale/'.$name))
     {
       $query="INSERT INTO productssale(userID,description,price,title,stock,category) value(?,?,?,?,?,?)";
             try{
@@ -230,7 +230,7 @@ function deleteProduct(productId,i)
                           <div class="row col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <p><?php echo '<b>Category: </b>'.$row['category'];?></p>
                                 <p><?php echo '<b>Description: </b>'.$row['description'];?></p>
-                                <p><?php echo '<b>Base price: </b>Rs '.$row['minPrice'].'</p><p><b>Upload Time: </b>'.$row['uploadedTime'];?></p>
+                                <p><?php echo '<b>Base price: </b>'.$row['price'];?></p>
                                 <button id="requests<?php echo $i;?>" class="btn btn-primary" onClick="showRequests(<?php echo $row['productId'];?>,<?php echo $i;?>);">See Requests</button>
                                 <button id="delete<?php echo $i;?>" class="btn btn-danger" onClick="deleteProduct(<?php echo $row['productId'];?>,<?php echo $i;?>);">Delete This Product</button>
                             </div>
