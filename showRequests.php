@@ -25,14 +25,14 @@ foreach($rows as $row)
    if($row['accepted']=='h')
    {
 	   echo '<b>Username: </b>'.$row['username'].'</br>';
-	   echo '<b>Bid Price:</b>'.' Rs '.$row['bidPrice'].'</br>';
+	   echo '<b>Bid Price:</b>'.''.$row['bidPrice'].' PHP</br>';
 	   echo '<div id="showDetails'.$row['serialNo'].'"></div>';
 	   echo '<button id="acceptorholdRequest'.$row['serialNo'].'" class="btn btn-success" onClick="acceptorholdRequest('.$row['serialNo'].','.$i.');">Accept</button>'."&nbsp;&nbsp;&nbsp;&nbsp;";
    }
    else
    { 
-	   echo '<b>Username: </b>'.$row['username'].'</br';
-	   echo '<b>Price: </b>'.' Rs '.$row['bidPrice'].'</br>';
+	   echo '<b>Username: </b>'.$row['username'].'</br>';
+	   echo '<b>Price: </b>'.''.$row['bidPrice'].' PHP</br>';
 	   echo '<div id="showDetails'.$row['serialNo'].'">';
 	   echo '<b>Name: </b>'.$row['name'].'</br>';
        echo '<b>Phone no: </b>'.$row['phoneno'].'</br>';

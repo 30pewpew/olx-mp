@@ -1,5 +1,5 @@
 <?php
-if(@$_SERVER['HTTP_REFERER']==='http://localhost/olx/myRequests.php')
+if(@$_SERVER['HTTP_REFERER']==='http://localhost/olx/auctionrequests.php')
 {
 if(isset($_GET['serialNo'])&&!empty($_GET['serialNo'])&&isset($_GET['bidPrice'])&&!empty($_GET['bidPrice']))
 {
@@ -18,5 +18,5 @@ if(isset($_GET['serialNo'])&&!empty($_GET['serialNo'])&&isset($_GET['bidPrice'])
 }
 }
 else
-die('died');
+die('Error.');
 ?>
