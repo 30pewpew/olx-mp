@@ -6,25 +6,30 @@ require_once('include/config.inc.php');
 require_once('include/connect.inc.php');
 if(isset($_FILES['uploaded_image']['name'])&& isset($_POST['price'])&&isset($_POST['type'])&&isset($_POST['description'])&&isset($_POST['stock'])&&isset($_POST['title']))
 {
-	$tempname=$_FILES['uploaded_image']['tmp_name'];
-	$minprice=$_POST['price'];
-	$prdcttype=$_POST['type'];
-	$description=$_POST['description'];
-	$stock=$_POST['stock'];
-	$title=$_POST['title'];
+  $tempname=$_FILES['uploaded_image']['tmp_name'];
+  $minprice=$_POST['price'];
+  $prdcttype=$_POST['type'];
+  $description=$_POST['description'];
+  $stock=$_POST['stock'];
+  $title=$_POST['title'];
   if(!empty($tempname)&&!empty($minprice)&&!empty($prdcttype)&&!empty($description)&&!empty($stock)&&!empty($title))
-	{
-		$name=$_FILES['uploaded_image']['name'];
-		$size=$_FILES['uploaded_image']['size'];
-		$type=$_FILES['uploaded_image']['type'];
-		$prdcttype=trim($prdcttype);
-		$maxsize=3713052;
+  {
+    $name=$_FILES['uploaded_image']['name'];
+    $size=$_FILES['uploaded_image']['size'];
+    $type=$_FILES['uploaded_image']['type'];
+    $prdcttype=trim($prdcttype);
+    $maxsize=3713052;
     $extension=strtolower(substr($name,strpos($name,'.')+1));
 		if(($extension=='jpg'||$extension=='jpeg')&&$type=='image/jpeg'&&$size<=$maxsize)
 		{
 		if(move_uploaded_file($tempname,'uploads/'.$name))
 		{
 			$query="INSERT INTO productssale(userID,description,price,title,stock,category) value(?,?,?,?,?,?)";
+    if(($extension=='jpg'||$extension=='jpeg')&&$type=='image/jpeg'&&$size<=$maxsize)
+    {
+    if(move_uploaded_file($tempname,'uploads/'.$name))
+    {
+      $query="INSERT INTO productssale(userID,description,price,title,stock,category) value(?,?,?,?,?,?)";
             try{
             $query_prepare=$conn->prepare($query);
             $query_prepare->execute(array($_SESSION['ID'],$description,$minprice,$title,$stock,$prdcttype));
@@ -39,13 +44,13 @@ if(isset($_FILES['uploaded_image']['name'])&& isset($_POST['price'])&&isset($_PO
              echo 'some error occur ',$e->getMessage();
             }
           // PDOStatement object
-		}
-		else
-		echo 'no file uploaded';
+    }
+    else
+    echo 'no file uploaded';
         }
         else 
           echo '<b>*image should be in jpeg or jpg format and size should be less than 3713052 Bytes</b>';
-	}
+  }
 }
 ?>
 
@@ -111,7 +116,7 @@ function declineRequest(serialNo,i)
      var url='declineRequest.php?serialNo='+serialNo;
      xmlhttp.open('GET',url,true);
      xmlhttp.send();
-	 document.getElementById(id).innerHTML=''; 
+   document.getElementById(id).innerHTML=''; 
 }
 function showRequests(productId,i)
 {
@@ -156,11 +161,11 @@ function deleteProduct(productId,i)
 </script>
 
 <?php
-	require_once('commonbar.php');
-	require_once('navigation.php');
-	showheader("Upload an Item");
-	shownavigation($_SESSION['username']);
-	?>
+  require_once('commonbar.php');
+  require_once('navigation.php');
+  showheader("Upload an Item");
+  shownavigation($_SESSION['username']);
+  ?>
 
 <!--EVERYTHING RELATED TO INPUT-->
 <div class="container-fluid" style="background-color: #2f4f4f;">
@@ -177,7 +182,7 @@ function deleteProduct(productId,i)
                 <label for="price">Minimum price</label>
                 <input type="number" name="price" class="form-control" placeholder="in Philippine Pesos" required>
             </div>
-			<div class="form-group">
+      <div class="form-group">
                 <label for="name">Product Name</label>
                 <input type="text" name="name" class="form-control" placeholder="Product Name" required></textarea>
             </div>
@@ -185,12 +190,12 @@ function deleteProduct(productId,i)
                 <label for="description">Description</label>
                 <textarea class="form-control" rows="5" name="description" placeholder="Give a description" required></textarea>
             </div>
-			<div class="form-group">
+      <div class="form-group">
                 <label for="stock">Available Stock</label>
                 <input type="number" name="stock" class="form-control" placeholder="Available Stock" required>
             </div>
             <div class="form-group">
-				<label for="type">Type</label>
+        <label for="type">Type</label>
                 <select name="type" size ="1" id="type" class="form-control" required>
                 <?php
                 $fp=fopen("itemlist.txt","r");
@@ -216,31 +221,31 @@ function deleteProduct(productId,i)
                 $query="select * from productssale where userId=?";
                 $query_prepare=$conn->prepare($query);
                 $query_prepare->execute(array($_SESSION['ID']));
-				$rows=$query_prepare->fetchAll();
-				$i=1;
+        $rows=$query_prepare->fetchAll();
+        $i=1;
                 foreach($rows as $row)
                 {
                      $pos='./uploads/'.$row['productId'].'.jpg';
-                	?>
+                  ?>
                     <div class="container-fluid well col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2" id="<?php echo $i;?>"  style="background-color: #d3d3d3;">
-                    	
-                        	<div class="row col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                        		<image src="<?php echo $pos ;?>" height="250" width="250" alt="image not found" style="border-radius:5%">
+                      
+                          <div class="row col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <image src="<?php echo $pos ;?>" height="250" width="250" alt="image not found" style="border-radius:5%">
                             </div>
-                        	<div class="row col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                          <div class="row col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <p><?php echo '<b>Category: </b>'.$row['category'];?></p>
                                 <p><?php echo '<b>Description: </b>'.$row['description'];?></p>
                                 <p><?php echo '<b>Base price: </b>Rs '.$row['minPrice'].'</p><p><b>Upload Time: </b>'.$row['uploadedTime'];?></p>
                                 <button id="requests<?php echo $i;?>" class="btn btn-primary" onClick="showRequests(<?php echo $row['productId'];?>,<?php echo $i;?>);">See Requests</button>
                                 <button id="delete<?php echo $i;?>" class="btn btn-danger" onClick="deleteProduct(<?php echo $row['productId'];?>,<?php echo $i;?>);">Delete This Product</button>
                             </div>
-                       	
+                        
                             <div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12" id="showRequests<?php echo $i;?>">
                             </div>
                     </div>
                   
                     <?php
-					       $i++; 
+                 $i++; 
                 }
             }
             catch(PDOException $e)

@@ -128,7 +128,7 @@ function updateRequest(serialNo,i)
 	 else if($row['accepted']=='n'){
 	    echo '<p>Your Request Status: <b>Rejected</b></p>';
 		echo '<div class="form-inline">';
-		echo '<input type="text" class="form-control" id="bidPrice'.$i.'" value="'.$row['bidPrice'].'">';
+		echo '<input type="number" onkeypress="return event.charCode >= 48" min="1" class="form-control" id="bidPrice'.$i.'" value="'.$row['bidPrice'].'">';
 		echo '<button class="btn btn-sm btn-warning" onClick="updateRequest('.$row['serialNo'].','.$i.');">Update Request</button>';
 		echo '</div>';
 		echo'<div id="updatestatus'.$i.'"></div>';
@@ -137,7 +137,7 @@ function updateRequest(serialNo,i)
 	 else{ 
 	    echo '<p><b>No Response from Seller</b></p>';
 		echo '<div class="form-inline">';
-		echo '<input type="text" class="form-control" id="bidPrice'.$i.'" value="'.$row['bidPrice'].'">';
+		echo '<input type="number" onkeypress="return event.charCode >= 48" min="1" class="form-control" id="bidPrice'.$i.'" value="'.$row['bidPrice'].'">';
 		echo '<button class="btn btn-sm btn-primary" onClick="updateRequest('.$row['serialNo'].','.$i.');">Update Request</button>';
 		echo '</div>';
 		echo '<div id="updatestatus'.$i.'"></div>';
