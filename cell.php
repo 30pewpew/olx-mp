@@ -161,10 +161,9 @@
           require_once('include/connect.inc.php');
           $read=trim($read);
           $query="select COUNT(*) from products where category= ? and userId != ?";
-          try
-          {
+          try{
           $query_prepare=$conn->prepare($query);
-          $query_prepare->execute(array($read));
+          $query_prepare->execute(array($read,$_SESSION['ID']));
           $row=$query_prepare->fetch();
           $a[$read]=$row['COUNT(*)'];
           }
