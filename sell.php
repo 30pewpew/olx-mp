@@ -24,7 +24,7 @@ if(isset($_FILES['uploaded_image']['name'])&& isset($_POST['price'])&&isset($_PO
 		{
 		if(move_uploaded_file($tempname,'uploads/'.$name))
 		{
-			$query="INSERT INTO productssale(userID,description,price,title,stock,type) value(?,?,?,?,?,?)";
+			$query="INSERT INTO productssale(userID,description,price,title,stock,category) value(?,?,?,?,?,?)";
             try{
             $query_prepare=$conn->prepare($query);
             $query_prepare->execute(array($_SESSION['ID'],$description,$minprice,$title,$stock,$prdcttype));
