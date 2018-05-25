@@ -1,0 +1,1 @@
+<div class="class<?php echo session_id(); ?>"></div>

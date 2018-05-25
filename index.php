@@ -191,7 +191,7 @@
             <!-- BROWSE ITEMS -->           
             <div class="well col-lg-3 col-md-3 col-sm-3 col-xs-3 col-lg-offset-3 col-md-offset-3 col-xs-offset-3 col-sm-offset-3" style="margin-top: 1.75%; margin-left: 39%; padding: 35px">
                 <h3 style="underline">BROWSE ITEMS <span class="glyphicon glyphicon-usd"></span></h3>
-                <form action="browse.php">
+                <form action="guestcell.php">
                   <button input type="submit" class="btn btn-primary">Browse Shop</button>
                 </form>
 

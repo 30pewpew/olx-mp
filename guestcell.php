@@ -1,6 +1,10 @@
 <?php
   session_start();
   if(!isset($_SESSION['ID']))
+  {
+    // Set random session ID
+    $_SESSION['ID'] = rand(0, 99999999);
+  }
   // Dependencies
   //header("Location:index.php");
   require_once('commonbar.php');
@@ -23,7 +27,7 @@
          document.getElementById("center").innerHTML = xmlhttp.responseText;
       }
     }
-    var url = 'getProduct.php?pname=' + category + '&start=' + start;
+    var url = 'guestgetProduct.php?pname=' + category + '&start=' + start;
     xmlhttp.open('GET',url,true);
     xmlhttp.send();
   }
@@ -39,7 +43,7 @@
          document.getElementById("center").innerHTML = xmlhttp.responseText;
       }
     }
-    var url = 'getProduct.php?pname=' + category + '&start=' + start;
+    var url = 'guestgetProduct.php?pname=' + category + '&start=' + start;
     xmlhttp.open('GET',url,true);
     xmlhttp.send();
   }
@@ -55,7 +59,7 @@
          document.getElementById("center").innerHTML=xmlhttp.responseText;
       }
     }
-    var url='getProduct.php?pname='+category+'&start='+start;
+    var url='guestgetProduct.php?pname='+category+'&start='+start;
     xmlhttp.open('GET',url,true);
     xmlhttp.send();
   }
@@ -192,6 +196,7 @@
     </div>
     <div class="container-fluid col-lg-6 col-md-6 col-sm-6 col-xs-6" id="center" >
     </div>
+
 </div>
 </body>
 </html>

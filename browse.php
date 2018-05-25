@@ -1,9 +1,16 @@
 <?php
-    // Dependencies
-    require_once('commonbar.php');
-    require_once('defaultnavigation.php');
-    showheader("BUY");
-    shownavigation();
+  session_start();
+  if(!isset($_SESSION['ID']))
+  {
+    // Set random session ID
+    $_SESSION['ID'] = rand(0, 99999999);
+  }
+  // Dependencies
+  //header("Location:index.php");
+  require_once('commonbar.php');
+  require_once('defaultnavigation.php');
+  showheader("BUY");
+  shownavigation();
 ?>
   <!-- Javascript Code -->
   <script type="text/javascript">
@@ -171,24 +178,25 @@
        }
        fclose($fp);
        arsort($a);
-	   $i=1;
+     $i=1;
        
        foreach($a as $key=>$value)
        {
           if($value==0)
-          	continue;
+            continue;
           echo '<button class="btn btn-sm btn-primary" hidden onClick="load(\''.$key.'\');">'.$key.'</button>';
           echo '<b>'.$value.' uploads</b><br>';
-		      if($i==10){
-		  	   break;
-		      }
-		    $i++;
+          if($i==10){
+           break;
+          }
+        $i++;
        }
 
     ?>
     </div>
     <div class="container-fluid col-lg-6 col-md-6 col-sm-6 col-xs-6" id="center" >
     </div>
+
 </div>
 </body>
 </html>
