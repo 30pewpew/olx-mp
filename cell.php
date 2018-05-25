@@ -5,7 +5,7 @@
   header("Location:index.php");
   require_once('commonbar.php');
   require_once('navigation.php');
-  showheader("BUY");
+  showheader("BID");
   shownavigation();
 ?>
   <!-- Javascript Code -->

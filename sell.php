@@ -28,11 +28,11 @@ if(isset($_FILES['uploaded_image']['name'])&& isset($_POST['price'])&&isset($_PO
             try{
             $query_prepare=$conn->prepare($query);
             $query_prepare->execute(array($_SESSION['ID'],$description,$minprice,$title,$stock,$prdcttype));
-            $query2="select productID from productssale where userId=? order by ProductID";
+            $query2="select productId from productssale where userId=? order by productId";
             $query_prepare2=$conn->prepare($query2);
             $query_prepare2->execute(array($_SESSION['ID']));
             $aa=$query_prepare2->fetch();
-            rename('forsale/'.$name,'forsale/'.$aa['productID'].'.jpg');
+            rename('forsale/'.$name,'forsale/'.$aa['productId'].'.jpg');
             }
             catch(PDOException $e)
             {
@@ -138,7 +138,7 @@ function showRequests(productId,i)
      document.getElementById(id).innerHTML="";
   }
 }
-function deleteItem(productID,i)
+function deleteItem(productId,i)
 {
   var xmlhttp=null;
   var id=i;
@@ -149,7 +149,7 @@ function deleteItem(productID,i)
      document.getElementById(id).innerHTML=xmlhttp.responseText;
   }
   }
-     var url='deleteItem.php?productID='+productID;
+     var url='deleteItem.php?productId='+productId;
      xmlhttp.open('GET',url,true);
      xmlhttp.send(); 
 }
@@ -220,7 +220,7 @@ function deleteItem(productID,i)
         $i=1;
                 foreach($rows as $row)
                 {
-                     $pos='./forsale/'.$row['productID'].'.jpg';
+                     $pos='./forsale/'.$row['productId'].'.jpg';
                   ?>
                     <div class="container-fluid well col-lg-8 col-md-8 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2" id="<?php echo $i;?>"  style="background-color: #d3d3d3;">
                       
@@ -232,7 +232,7 @@ function deleteItem(productID,i)
                                 <p><?php echo '<b>Description: </b>'.$row['description'];?></p>
                                 <p><?php echo '<b>Base price: </b>'.$row['price'];?></p>
                                 <button id="requests<?php echo $i;?>" class="btn btn-primary" onClick="showRequests(<?php echo $row['productId'];?>,<?php echo $i;?>);">See Requests</button>
-                                <button id="delete<?php echo $i;?>" class="btn btn-danger" onClick="deleteItem(<?php echo $row['productID'];?>,<?php echo $i;?>);">Delete This Product</button>
+                                <button id="delete<?php echo $i;?>" class="btn btn-danger" onClick="deleteItem(<?php echo $row['productId'];?>,<?php echo $i;?>);">Delete This Product</button>
                             </div>
                         
                             <div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12" id="showRequests<?php echo $i;?>">

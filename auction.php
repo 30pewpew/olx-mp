@@ -236,6 +236,7 @@ function deleteProduct(productId,i)
                                 <p><?php echo '<b>Base price: </b>'.$row['minPrice'].' PHP</p><p><b>Upload Time: </b>'.$row['uploadedTime'];?></p>
                                 <button id="requests<?php echo $i;?>" class="btn btn-primary" onClick="showRequests(<?php echo $row['productId'];?>,<?php echo $i;?>);">See Requests</button>
                                 <button id="delete<?php echo $i;?>" class="btn btn-danger" onClick="deleteProduct(<?php echo $row['productId'];?>,<?php echo $i;?>);">Delete This Product</button>
+                                <button id="requests<?php echo $i;?>" class="btn btn-success" onClick="showRequests(<?php echo $row['productId'];?>,<?php echo $i;?>);">End Auction</button>
                             </div>
                         
                             <div class="container col-lg-12 col-md-12 col-sm-12 col-xs-12" id="showRequests<?php echo $i;?>">

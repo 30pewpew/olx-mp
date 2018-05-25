@@ -64,7 +64,7 @@
   {
     var xmlhttp=null;
     var id="showStatus"+i;
-    var price=document.getElementById('price'+i).value;
+    var bidPrice=document.getElementById('bidPrice'+i).value;
     var xmlhttp=getXmlHttpObject();
     xmlhttp.onreadystatechange=function()
     {
@@ -73,7 +73,7 @@
          document.getElementById(id).innerHTML=xmlhttp.responseText;
       }
     }
-    var url = 'itemRequest.php?productId=' + productId + '&price=' + price;
+    var url = 'sendRequest.php?productId=' + productId + '&bidPrice=' + bidPrice;
     xmlhttp.open('GET',url,true);
     xmlhttp.send();
     document.getElementById('forBid' + i).innerHTML = "";
@@ -92,14 +92,14 @@
          document.getElementById(id).innerHTML = xmlhttp.responseText;
       }
     }
-    var url = 'itemStatus.php?productId=' + productId;
+    var url = 'othersStatus.php?productId=' + productId;
     xmlhttp.open('GET',url,true);
     xmlhttp.send();
     }
 </script>
 
 <!-- CONTAINER -->
-<div class="container-fluid" id="background" style="background-color: #2f4f4f; display: block; margin-left: auto; margin-right: auto; background-position: 35% 50%;background-repeat: no-repeat; background-size: cover; height: 100%;">
+<div class="container-fluid" id="background" style="background-color: cyan; display: block; margin-left: auto; margin-right: auto; background-position: 35% 50%;background-repeat: no-repeat; background-size: cover; height: 100%;">
   <div class="container-fluid">
     <div class="col-lg-12">
       <br>
@@ -116,7 +116,7 @@
       <div class="col-lg-3">
           <!--<button class="btn btn-primary dropdown-toggle col-lg-2" type="button"" style="width: 200%;">Hot<span class="caret"></span></button>-->
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="buy.php" style="font-family: Roboto; font-size: 125%">Plain</a></li>
+                <li class="active"><a href="cell.php" style="font-family: Roboto; font-size: 125%">Plain</a></li>
                 <li><a onclick="load('Sleeping')">Sleeping</a></li>
                 <li><a onclick="load('Group')">Group</a></li>
             </ul>
@@ -125,7 +125,7 @@
       <div class="col-lg-3">
           <!--<button class="btn btn-primary dropdown-toggle col-lg-2" type="button"" style="width: 200%;">Hot<span class="caret"></span></button>-->
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="buy.php" style="font-family: Roboto; font-size: 125%">Pogi</a></li>
+                <li class="active"><a href="cell.php" style="font-family: Roboto; font-size: 125%">Pogi</a></li>
                 <li><a onclick="load('Flex')">Flex</a></li>
                 <li><a onclick="load('Gym')">Solo</a></li>
             </ul>
@@ -134,7 +134,7 @@
       <div class="col-lg-3">
           <!--<button class="btn btn-primary dropdown-toggle col-lg-2" type="button"" style="width: 200%;">Hot<span class="caret"></span></button>-->
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="buy.php" style="font-family: Roboto; font-size: 125%">Normal</a></li>
+                <li class="active"><a href="cell.php" style="font-family: Roboto; font-size: 125%">Normal</a></li>
                 <li><a onclick="load('Selfies')">Selfies</a></li>
                 <li><a onclick="load('Pair')">Pair</a></li>
             </ul>
@@ -143,7 +143,7 @@
       <div class="col-lg-3">
           <!--<button class="btn btn-primary dropdown-toggle col-lg-2" type="button"" style="width: 200%;">Hot<span class="caret"></span></button>-->
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="buy.php" style="font-family: Roboto; font-size: 125%">Hot</a></li>
+                <li class="active"><a href="cell.php" style="font-family: Roboto; font-size: 125%">Hot</a></li>
                 <li><a onclick="load('Shirtless')">Shirtless</a></li>
                 <li><a onclick="load('Photoshoot')">Photoshoot</a></li>
             </ul>
@@ -174,18 +174,18 @@
        }
        fclose($fp);
        arsort($a);
-	   $i=1;
+     $i=1;
        
        foreach($a as $key=>$value)
        {
           if($value==0)
-          	continue;
+            continue;
           echo '<button class="btn btn-sm btn-primary" hidden onClick="load(\''.$key.'\');">'.$key.'</button>';
           echo '<b>'.$value.' uploads</b><br>';
-		      if($i==10){
-		  	   break;
-		      }
-		    $i++;
+          if($i==10){
+           break;
+          }
+        $i++;
        }
 
     ?>
