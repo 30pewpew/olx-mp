@@ -20,11 +20,6 @@ if(isset($_FILES['uploaded_image']['name'])&& isset($_POST['price'])&&isset($_PO
     $prdcttype=trim($prdcttype);
     $maxsize=3713052;
     $extension=strtolower(substr($name,strpos($name,'.')+1));
-		if(($extension=='jpg'||$extension=='jpeg')&&$type=='image/jpeg'&&$size<=$maxsize)
-		{
-		if(move_uploaded_file($tempname,'uploads/'.$name))
-		{
-			$query="INSERT INTO productssale(userID,description,price,title,stock,category) value(?,?,?,?,?,?)";
     if(($extension=='jpg'||$extension=='jpeg')&&$type=='image/jpeg'&&$size<=$maxsize)
     {
     if(move_uploaded_file($tempname,'uploads/'.$name))
@@ -256,4 +251,5 @@ function deleteProduct(productId,i)
     </div>
     
 </body>
+</html>
 </html>
