@@ -10,7 +10,7 @@ if(isset($_GET['productId'])&&!empty($_GET['productId']))
    try{
    $query_prepare=$conn->prepare($query);
    $query_prepare->execute(array($productId));
-   echo 'Product deleted successfully';
+   echo 'Auction product deleted successfully';
    }
    catch(PDOException $e)
             {
@@ -19,7 +19,7 @@ if(isset($_GET['productId'])&&!empty($_GET['productId']))
 }
 }
 else
-die('chalaki');
+die('WTF');
 
 
 
