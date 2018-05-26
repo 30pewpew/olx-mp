@@ -5,11 +5,10 @@
     // Set random session ID
     $_SESSION['ID'] = rand(0, 99999999);
   }
-  // Dependencies
   //header("Location:index.php");
   require_once('commonbar.php');
   require_once('defaultnavigation.php');
-  showheader("BID");
+  showheader("BUY");
   shownavigation();
 ?>
   <!-- Javascript Code -->
@@ -27,7 +26,7 @@
          document.getElementById("center").innerHTML = xmlhttp.responseText;
       }
     }
-    var url = 'guestgetProduct.php?pname=' + category + '&start=' + start;
+    var url = 'guestgetItem.php?pname=' + category + '&start=' + start;
     xmlhttp.open('GET',url,true);
     xmlhttp.send();
   }
@@ -43,7 +42,7 @@
          document.getElementById("center").innerHTML = xmlhttp.responseText;
       }
     }
-    var url = 'guestgetProduct.php?pname=' + category + '&start=' + start;
+    var url = 'guestgetItem.php?pname=' + category + '&start=' + start;
     xmlhttp.open('GET',url,true);
     xmlhttp.send();
   }
@@ -59,7 +58,7 @@
          document.getElementById("center").innerHTML=xmlhttp.responseText;
       }
     }
-    var url='guestgetProduct.php?pname='+category+'&start='+start;
+    var url='guestgetItem.php?pname='+category+'&start='+start;
     xmlhttp.open('GET',url,true);
     xmlhttp.send();
   }
@@ -120,7 +119,7 @@
       <div class="col-lg-3">
           <!--<button class="btn btn-primary dropdown-toggle col-lg-2" type="button"" style="width: 200%;">Hot<span class="caret"></span></button>-->
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="guestcell.php" style="font-family: Roboto; font-size: 125%">Plain</a></li>
+                <li class="active"><a href="cell.php" style="font-family: Roboto; font-size: 125%">Plain</a></li>
                 <li><a onclick="load('Sleeping')">Sleeping</a></li>
                 <li><a onclick="load('Group')">Group</a></li>
             </ul>
@@ -129,7 +128,7 @@
       <div class="col-lg-3">
           <!--<button class="btn btn-primary dropdown-toggle col-lg-2" type="button"" style="width: 200%;">Hot<span class="caret"></span></button>-->
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="guestcell.php" style="font-family: Roboto; font-size: 125%">Pogi</a></li>
+                <li class="active"><a href="cell.php" style="font-family: Roboto; font-size: 125%">Pogi</a></li>
                 <li><a onclick="load('Flex')">Flex</a></li>
                 <li><a onclick="load('Gym')">Solo</a></li>
             </ul>
@@ -138,7 +137,7 @@
       <div class="col-lg-3">
           <!--<button class="btn btn-primary dropdown-toggle col-lg-2" type="button"" style="width: 200%;">Hot<span class="caret"></span></button>-->
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="guestcell.php" style="font-family: Roboto; font-size: 125%">Normal</a></li>
+                <li class="active"><a href="cell.php" style="font-family: Roboto; font-size: 125%">Normal</a></li>
                 <li><a onclick="load('Selfies')">Selfies</a></li>
                 <li><a onclick="load('Pair')">Pair</a></li>
             </ul>
@@ -147,7 +146,7 @@
       <div class="col-lg-3">
           <!--<button class="btn btn-primary dropdown-toggle col-lg-2" type="button"" style="width: 200%;">Hot<span class="caret"></span></button>-->
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="guestcell.php" style="font-family: Roboto; font-size: 125%">Hot</a></li>
+                <li class="active"><a href="cell.php" style="font-family: Roboto; font-size: 125%">Hot</a></li>
                 <li><a onclick="load('Shirtless')">Shirtless</a></li>
                 <li><a onclick="load('Photoshoot')">Photoshoot</a></li>
             </ul>
@@ -178,25 +177,24 @@
        }
        fclose($fp);
        arsort($a);
-	   $i=1;
+     $i=1;
        
        foreach($a as $key=>$value)
        {
           if($value==0)
-          	continue;
+            continue;
           echo '<button class="btn btn-sm btn-primary" hidden onClick="load(\''.$key.'\');">'.$key.'</button>';
           echo '<b>'.$value.' uploads</b><br>';
-		      if($i==10){
-		  	   break;
-		      }
-		    $i++;
+          if($i==10){
+           break;
+          }
+        $i++;
        }
 
     ?>
     </div>
     <div class="container-fluid col-lg-6 col-md-6 col-sm-6 col-xs-6" id="center" >
     </div>
-
 </div>
 </body>
 </html>

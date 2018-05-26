@@ -53,7 +53,7 @@ function shownavigation(){
           <div class="col-lg-12">
             <ul class="nav nav-pills nav-justified">
                 <li><a href="guestcell.php" style="font-family: Roboto; font-size: 150%">Bid</a></li>
-                <li><a href="buy.php" style="font-family: Roboto; font-size: 150%">Buy</a></li>
+                <li><a href="guestbuy.php" style="font-family: Roboto; font-size: 150%">Buy</a></li>
                 <li><a href="logout.php" style="font-family: Roboto; font-size: 150%">Login</b></a></li>
                 <!--
                 <div class="col-lg-2 col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4">

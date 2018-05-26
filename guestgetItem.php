@@ -66,63 +66,13 @@
    if($row2['COUNT(*)']==0){
     $stock = rand(1,20);
     echo '<p><b>Stock: </b>'.$stock.'</p>';
-    echo '<form action="purchasehistory.php">';
-    echo '<button class="btn btn-md btn-primary" onClick="sendRequest('.$row['productId'].','.$i.')">Buy</button>';
-    echo '</form>';
-
-    echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Leave a review</button>';
-      echo '<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">';
-        echo '<div class="modal-dialog modal-dialog-centered" role="document">';
-          echo '<div class="modal-content">';
-            echo '<div class="modal-header">';
-              echo '<h5 class="modal-title" id="exampleModalLongTitle">Rate Product (1 - 5)</h5>';
-              echo '<input type="range" min="1" max="5" step="1">';
-              echo '<p>Leave a comment</p>';
-              echo '<textarea rows="4" cols="50"></textarea>';
-              echo '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
-                echo '<span aria-hidden="true">&times;</span>';
-              echo '</button>';
-            echo '</div>';
-            echo '<div class="modal-body">';
-            echo '</div>';
-            echo '<div class="modal-footer">';
-              echo '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';
-              echo '<button type="button" class="btn btn-primary">Save changes</button>';
-            echo '</div>';
-          echo '</div>';
-        echo '</div>';
-      echo '</div>';
+    echo '<h1>User must be logged in to buy items!</h1>';
    }
    else
    {
-      $stock = rand(1, 20);
+      $stock = rand(1, 20); 
       echo '<p><b>Stock: </b>'.$stock.'</p>';
-      echo '<form action="purchasehistory.php">';
-      echo '<button class="btn btn-md btn-primary" onClick="sendRequest('.$row['productId'].','.$i.')">Buy</button>';
-      echo '</form>';
-
-      echo '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Leave a review</button>';
-      echo '<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">';
-        echo '<div class="modal-dialog modal-dialog-centered" role="document">';
-          echo '<div class="modal-content">';
-            echo '<div class="modal-header">';
-              echo '<h5 class="modal-title" id="exampleModalLongTitle">Rate Product (1 - 5)</h5>';
-              echo '<input type="range" min="1" max="5" step="1">';
-              echo '<p>Leave a comment</p>';
-              echo '<textarea rows="4" cols="50"></textarea>';
-              echo '<button type="button" class="close" data-dismiss="modal" aria-label="Close">';
-                echo '<span aria-hidden="true">&times;</span>';
-              echo '</button>';
-            echo '</div>';
-            echo '<div class="modal-body">';
-            echo '</div>';
-            echo '<div class="modal-footer">';
-              echo '<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>';
-              echo '<button type="button" class="btn btn-primary">Save changes</button>';
-            echo '</div>';
-          echo '</div>';
-        echo '</div>';
-      echo '</div>';
+      echo '<h1>User must be logged in to buy items!</h1>';
    }
    echo '</div>';
    ?>
